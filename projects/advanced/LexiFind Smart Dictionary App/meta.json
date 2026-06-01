@@ -1,0 +1,15 @@
+{
+  "title": "LexiFind Dictionary",
+  "description": "Modern dictionary app with clean UI, fast search, and real-time meanings, examples, and pronunciation via API.",
+  "image": "https://raw.githubusercontent.com/Bilal742/JavaScript-projects/main/Img/image17.png",
+  "techStack": [
+    "HTML",
+    "CSS",
+    "JavaScript"
+  ],
+  "features": [
+    "Basic Arithmetic",
+    "Dark Mode",
+    "Responsive Design"
+  ]
+}

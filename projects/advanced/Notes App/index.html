@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus Notes | Next-Level Note Taking</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <i class="fas fa-sticky-note"></i>
+                    <h1>Nexus Notes</h1>
+                </div>
+                <div class="action-btn" id="sidebar-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+            
+            <button class="new-note-btn" id="new-note-btn">
+                <i class="fas fa-plus-circle"></i>
+                New Note
+            </button>
+            
+            <div class="sidebar-menu">
+                <div class="menu-item active" data-filter="all">
+                    <div class="menu-item-content">
+                        <i class="fas fa-th-large"></i>
+                        <span>All Notes</span>
+                    </div>
+                    <span class="note-count" id="all-count">8</span>
+                </div>
+                <div class="menu-item" data-filter="pinned">
+                    <div class="menu-item-content">
+                        <i class="fas fa-thumbtack"></i>
+                        <span>Pinned</span>
+                    </div>
+                    <span class="note-count" id="pinned-count">3</span>
+                </div>
+                <div class="menu-item" data-filter="favorite">
+                    <div class="menu-item-content">
+                        <i class="fas fa-star"></i>
+                        <span>Favorites</span>
+                    </div>
+                    <span class="note-count" id="favorite-count">4</span>
+                </div>
+                <div class="menu-item" data-filter="recent">
+                    <div class="menu-item-content">
+                        <i class="fas fa-history"></i>
+                        <span>Recent</span>
+                    </div>
+                </div>
+                <div class="menu-item" data-filter="trash">
+                    <div class="menu-item-content">
+                        <i class="fas fa-trash"></i>
+                        <span>Trash</span>
+                    </div>
+                    <span class="note-count" id="trash-count">0</span>
+                </div>
+                
+                <div class="folders-section">
+                    <div class="section-title">Folders</div>
+                    <div class="folder-item active" data-folder="all">
+                        <div class="folder-content">
+                            <div class="folder-color" style="background-color: #6366f1;"></div>
+                            <span>All Notes</span>
+                        </div>
+                        <span class="note-count">8</span>
+                    </div>
+                    <div class="folder-item" data-folder="personal">
+                        <div class="folder-content">
+                            <div class="folder-color" style="background-color: #10b981;"></div>
+                            <span>Personal</span>
+                        </div>
+                        <span class="note-count">4</span>
+                    </div>
+                    <div class="folder-item" data-folder="work">
+                        <div class="folder-content">
+                            <div class="folder-color" style="background-color: #f59e0b;"></div>
+                            <span>Work</span>
+                        </div>
+                        <span class="note-count">3</span>
+                    </div>
+                    <div class="folder-item" data-folder="ideas">
+                        <div class="folder-content">
+                            <div class="folder-color" style="background-color: #8b5cf6;"></div>
+                            <span>Ideas</span>
+                        </div>
+                        <span class="note-count">1</span>
+                    </div>
+                </div>
+                
+                <div class="tags-section">
+                    <div class="section-title">Tags</div>
+                    <div class="tag-item active" data-tag="all">
+                        <div class="tag-content">
+                            <div class="tag-color" style="background-color: #94a3b8;"></div>
+                            <span class="tag-name">All Tags</span>
+                        </div>
+                    </div>
+                    <div class="tag-item" data-tag="important">
+                        <div class="tag-content">
+                            <div class="tag-color" style="background-color: #ef4444;"></div>
+                            <span class="tag-name">Important</span>
+                        </div>
+                    </div>
+                    <div class="tag-item" data-tag="todo">
+                        <div class="tag-content">
+                            <div class="tag-color" style="background-color: #3b82f6;"></div>
+                            <span class="tag-name">To-Do</span>
+                        </div>
+                    </div>
+                    <div class="tag-item" data-tag="meeting">
+                        <div class="tag-content">
+                            <div class="tag-color" style="background-color: #8b5cf6;"></div>
+                            <span class="tag-name">Meeting</span>
+                        </div>
+                    </div>
+                    <div class="tag-item" data-tag="code">
+                        <div class="tag-content">
+                            <div class="tag-color" style="background-color: #10b981;"></div>
+                            <span class="tag-name">Code</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="topbar">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="search-input" placeholder="Search notes...">
+                </div>
+                
+                <div class="user-actions">
+                    <div class="action-btn" id="view-toggle" title="Toggle view">
+                        <i class="fas fa-th-large"></i>
+                    </div>
+                    <div class="action-btn" id="sort-notes" title="Sort notes">
+                        <i class="fas fa-sort-amount-down"></i>
+                    </div>
+                    <div class="action-btn" id="sync-notes" title="Sync notes">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <div class="user-avatar" title="User profile">
+                        AJ
+                    </div>
+                </div>
+            </div>
+            
+            <div class="notes-container" id="notes-container">
+                <!-- Note cards will be dynamically inserted here -->
+            </div>
+        </div>
+        
+        <!-- Editor Panel -->
+        <div class="editor-panel" id="editor-panel">
+            <div class="editor-header">
+                <h2 id="editor-title">New Note</h2>
+                <div class="editor-close" id="editor-close">
+                    <i class="fas fa-times"></i>
+                </div>
+            </div>
+            
+            <div class="editor-toolbar">
+                <div class="toolbar-btn" data-format="bold" title="Bold"><i class="fas fa-bold"></i></div>
+                <div class="toolbar-btn" data-format="italic" title="Italic"><i class="fas fa-italic"></i></div>
+                <div class="toolbar-btn" data-format="underline" title="Underline"><i class="fas fa-underline"></i></div>
+                <div class="toolbar-btn" data-format="insertUnorderedList" title="Bullet List"><i class="fas fa-list-ul"></i></div>
+                <div class="toolbar-btn" data-format="insertOrderedList" title="Numbered List"><i class="fas fa-list-ol"></i></div>
+                <div class="toolbar-btn" data-action="createLink" title="Insert Link"><i class="fas fa-link"></i></div>
+                <div class="toolbar-btn" data-action="insertImage" title="Insert Image"><i class="fas fa-image"></i></div>
+            </div>
+            
+            <div class="editor-content">
+                <input type="text" class="editor-title" id="note-title" placeholder="Note Title">
+                <div class="editor-body" id="note-body" contenteditable="true" placeholder="Start typing your note here..."></div>
+            </div>
+            
+            <div class="editor-footer">
+                <div class="editor-tags" id="tags-container">
+                    <!-- Tags will be dynamically inserted here -->
+                    <input type="text" class="tag-input" id="tag-input" placeholder="Add tag...">
+                </div>
+                
+                <div class="editor-actions">
+                    <button class="btn btn-secondary" id="cancel-note">Cancel</button>
+                    <button class="btn btn-primary" id="save-note">Save Note</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Overlay -->
+        <div class="overlay" id="overlay"></div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

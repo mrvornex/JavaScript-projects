@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChronoCalc | Ultimate Age Calculator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><i class="fas fa-birthday-cake"></i> ChronoCalc</h1>
+            <p>Calculate your age in years, months, days, and more with precision and style!</p>
+        </div>
+        
+        <div class="main-content">
+            <div class="input-section">
+                <div class="input-group">
+                    <label><i class="fas fa-calendar-alt"></i> Select Birth Date</label>
+                    <div class="date-inputs">
+                        <select id="birth-day" class="date-select">
+                            <option value="">Day</option>
+                            <!-- Days will be populated by JS -->
+                        </select>
+                        <select id="birth-month" class="date-select">
+                            <option value="">Month</option>
+                            <!-- Months will be populated by JS -->
+                        </select>
+                        <select id="birth-year" class="date-select">
+                            <option value="">Year</option>
+                            <!-- Years will be populated by JS -->
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="input-group">
+                    <label><i class="fas fa-calendar-check"></i> Select Target Date (Optional)</label>
+                    <div class="date-inputs">
+                        <select id="target-day" class="date-select">
+                            <option value="">Day</option>
+                            <!-- Days will be populated by JS -->
+                        </select>
+                        <select id="target-month" class="date-select">
+                            <option value="">Month</option>
+                            <!-- Months will be populated by JS -->
+                        </select>
+                        <select id="target-year" class="date-select">
+                            <option value="">Year</option>
+                            <!-- Years will be populated by JS -->
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="buttons-container">
+                    <button class="btn btn-primary" id="calculate-btn">
+                        <i class="fas fa-calculator"></i> Calculate Age
+                    </button>
+                    <button class="btn btn-secondary" id="today-btn">
+                        <i class="fas fa-sun"></i> Today's Date
+                    </button>
+                    <button class="btn btn-secondary" id="clear-btn">
+                        <i class="fas fa-eraser"></i> Clear All
+                    </button>
+                    <button class="btn btn-secondary" id="random-btn">
+                        <i class="fas fa-random"></i> Random Date
+                    </button>
+                </div>
+                
+                <div class="buttons-container" style="margin-top: 15px;">
+                    <button class="btn btn-secondary" id="next-birthday-btn">
+                        <i class="fas fa-gift"></i> Next Birthday
+                    </button>
+                    <button class="btn btn-secondary" id="compare-btn">
+                        <i class="fas fa-balance-scale"></i> Compare Ages
+                    </button>
+                </div>
+            </div>
+            
+            <div class="result-section">
+                <div class="result-card">
+                    <h3><i class="fas fa-user-clock"></i> Your Age</h3>
+                    <div class="age-display" id="age-display">
+                        <div class="age-unit">
+                            <div class="age-value" id="years">--</div>
+                            <div class="age-label">Years</div>
+                        </div>
+                        <div class="age-unit">
+                            <div class="age-value" id="months">--</div>
+                            <div class="age-label">Months</div>
+                        </div>
+                        <div class="age-unit">
+                            <div class="age-value" id="days">--</div>
+                            <div class="age-label">Days</div>
+                        </div>
+                    </div>
+                    
+                    <div class="detail-grid">
+                        <div class="detail-item">
+                            <div class="detail-value" id="weeks">--</div>
+                            <div class="detail-label">Weeks</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-value" id="hours">--</div>
+                            <div class="detail-label">Hours</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-value" id="minutes">--</div>
+                            <div class="detail-label">Minutes</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-value" id="seconds">--</div>
+                            <div class="detail-label">Seconds</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="comparison-section">
+                    <h3><i class="fas fa-chart-bar"></i> Age Comparisons</h3>
+                    <div class="comparison-items" id="comparison-items">
+                        <div class="comparison-item">
+                            <div class="comparison-value" id="dog-years">--</div>
+                            <div class="comparison-label">Dog Years</div>
+                        </div>
+                        <div class="comparison-item">
+                            <div class="comparison-value" id="cat-years">--</div>
+                            <div class="comparison-label">Cat Years</div>
+                        </div>
+                        <div class="comparison-item">
+                            <div class="comparison-value" id="generation">--</div>
+                            <div class="comparison-label">Generation</div>
+                        </div>
+                        <div class="comparison-item">
+                            <div class="comparison-value" id="zodiac">--</div>
+                            <div class="comparison-label">Zodiac Sign</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="history-section">
+            <div class="history-header">
+                <h3><i class="fas fa-history"></i> Calculation History</h3>
+                <button class="clear-history" id="clear-history-btn">
+                    <i class="fas fa-trash"></i> Clear History
+                </button>
+            </div>
+            <div class="history-list" id="history-list">
+                <!-- History items will be added here -->
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>ChronoCalc © 2023 | Every moment counts!</p>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

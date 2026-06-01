@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeoGuide - Advanced Country Information App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+   <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-globe-americas"></i> GeoGuide</h1>
+            <p class="tagline">Your comprehensive guide to countries around the world. Compare, explore, and learn.</p>
+            
+            <div class="api-status" id="apiStatus">
+                <i class="fas fa-circle"></i> <span>Loading...</span>
+            </div>
+            
+            <div class="search-container">
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Type country name (e.g., India, France, Japan)...">
+                    <div class="search-suggestions" id="searchSuggestions">
+                        <!-- Search suggestions will appear here -->
+                    </div>
+                </div>
+                <select id="regionFilter">
+                    <option value="">All Regions</option>
+                    <option value="Africa">Africa</option>
+                    <option value="Americas">Americas</option>
+                    <option value="Asia">Asia</option>
+                    <option value="Europe">Europe</option>
+                    <option value="Oceania">Oceania</option>
+                </select>
+                <button id="searchBtn" class="search-btn"><i class="fas fa-search"></i> Search</button>
+                <button id="randomCountry" class="btn"><i class="fas fa-random"></i> Random</button>
+            </div>
+            
+            <div class="demo-notice">
+                <i class="fas fa-info-circle"></i>
+                <span>Try searching: <strong>India, USA, Japan, France, Germany, Brazil, Australia</strong></span>
+            </div>
+        </header>
+        
+        <div class="view-controls">
+            <button class="view-btn active" data-view="overview">Overview</button>
+            <button class="view-btn" data-view="comparison">Comparison</button>
+            <button class="view-btn" data-view="all">All Countries</button>
+        </div>
+        
+        <!-- Overview View -->
+        <div id="overviewView" class="view">
+            <div class="main-content">
+                <div class="card">
+                    <h2 class="card-title"><span id="countryFlag" class="flag">🇺🇸</span> <span id="countryName">United States</span></h2>
+                    
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <div class="info-label">Capital</div>
+                            <div class="info-value" id="countryCapital">Washington D.C.</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Region</div>
+                            <div class="info-value" id="countryRegion">Americas</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Population</div>
+                            <div class="info-value" id="countryPopulation">329,484,123</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Area</div>
+                            <div class="info-value" id="countryArea">9,833,520 km²</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Currency</div>
+                            <div class="info-value" id="countryCurrency">United States Dollar (USD)</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Languages</div>
+                            <div class="info-value" id="countryLanguages">English</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Bordering Countries</div>
+                            <div class="info-value" id="countryBorders">Canada, Mexico</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Country Code</div>
+                            <div class="info-value" id="countryCode">USA</div>
+                        </div>
+                    </div>
+                    
+                    <div class="stats">
+                        <div class="stat-item">
+                            <div class="stat-value" id="countryPopulationDensity">35.6</div>
+                            <div class="stat-label">People/km²</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">🇺🇸</div>
+                            <div class="stat-label">Flag Emoji</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value" id="countryBordersCount">2</div>
+                            <div class="stat-label">Borders</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h2 class="card-title"><i class="fas fa-map-marked-alt"></i> Map & Location</h2>
+                    <div id="countryMap"></div>
+                    <div class="info-grid" style="margin-top: 20px;">
+                        <div class="info-item">
+                            <div class="info-label">Region</div>
+                            <div class="info-value" id="countryContinent">North America</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Subregion</div>
+                            <div class="info-value" id="countrySubregion">Northern America</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Coordinates</div>
+                            <div class="info-value" id="countryCoordinates">38.0° N, 97.0° W</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Comparison View -->
+        <div id="comparisonView" class="view hidden">
+            <div class="comparison-section">
+                <h2 class="card-title"><i class="fas fa-balance-scale"></i> Compare Countries</h2>
+                <div class="comparison-container">
+                    <div class="comparison-card">
+                        <h3 class="card-title">Select First Country</h3>
+                        <div class="country-list" id="countryList1">
+                            <!-- Country list will be populated here -->
+                        </div>
+                    </div>
+                    <div class="comparison-card">
+                        <h3 class="card-title">Select Second Country</h3>
+                        <div class="country-list" id="countryList2">
+                            <!-- Country list will be populated here -->
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="comparisonResult" class="card hidden" style="margin-top: 30px;">
+                    <h2 class="card-title"><i class="fas fa-chart-bar"></i> Comparison Results</h2>
+                    <div id="comparisonData">
+                        <!-- Comparison data will appear here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- All Countries View -->
+        <div id="allView" class="view hidden">
+            <div class="card">
+                <h2 class="card-title"><i class="fas fa-list"></i> All Countries</h2>
+                <div class="country-list" id="allCountriesList">
+                    <!-- All countries will be listed here -->
+                </div>
+            </div>
+        </div>
+        
+        <div id="errorMessage" class="error">
+            <i class="fas fa-exclamation-triangle"></i> <span id="errorText">Error loading data. Please try again.</span>
+        </div>
+        
+        <div class="loading" id="loadingIndicator">
+            <i class="fas fa-spinner fa-spin"></i> Loading country data...
+        </div>
+        
+        <div class="footer">
+            <p>GeoGuide &copy; 2023 | Data provided by <a href="https://restcountries.com" target="_blank">REST Countries API</a> | Maps by <a href="https://leafletjs.com" target="_blank">Leaflet</a></p>
+            <p style="margin-top: 10px;">This application provides information about countries worldwide. Data may not be 100% accurate or current.</p>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+   <script src="app.js"></script>
+</body>
+</html>

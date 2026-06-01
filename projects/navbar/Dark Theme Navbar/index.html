@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark Theme Navbar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background: #0a0a0a;
+            color: #e5e5e5;
+            min-height: 150vh;
+        }
+
+        .navbar {
+            background: #111111;
+            border-bottom: 1px solid #222;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: white;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-link {
+            color: #a1a1aa;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #8b5cf6, #3b82f6);
+            transition: width 0.3s;
+        }
+
+        .nav-link:hover {
+            color: white;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .theme-toggle {
+            background: #1f1f1f;
+            border: 1px solid #333;
+            color: #a1a1aa;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .theme-toggle:hover {
+            color: white;
+            border-color: #444;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+            color: white;
+            border: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 10px 20px rgba(139, 92, 246, 0.2);
+        }
+
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            color: #a1a1aa;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 1024px) {
+            .hamburger {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: #111111;
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+                border-bottom: 1px solid #222;
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s;
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+
+        .hero {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: #111111;
+            border: 1px solid #222;
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            border-color: #8b5cf6;
+            transform: translateY(-5px);
+        }
+
+        .feature-card i {
+            font-size: 2.5rem;
+            color: #8b5cf6;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">D</div>
+                <span class="logo-text">DarkNav</span>
+            </a>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#" class="nav-link">Home</a></li>
+                <li><a href="#" class="nav-link">Features</a></li>
+                <li><a href="#" class="nav-link">Solutions</a></li>
+                <li><a href="#" class="nav-link">Pricing</a></li>
+                <li><a href="#" class="nav-link">Contact</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="btn-primary">Get Started</button>
+                <button class="hamburger" id="hamburger">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>Dark Theme Navbar</h1>
+        <p>Professional dark mode navigation with gradient accents</p>
+    </section>
+
+    <section class="features">
+        <div class="feature-card">
+            <i class="fas fa-shield-alt"></i>
+            <h3>Secure</h3>
+            <p>Enterprise-grade security features</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-bolt"></i>
+            <h3>Fast</h3>
+            <p>Lightning fast performance</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-infinity"></i>
+            <h3>Scalable</h3>
+            <p>Grows with your business</p>
+        </div>
+    </section>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.innerHTML = navLinks.classList.contains('active')
+                ? '<i class="fas fa-times"></i>'
+                : '<i class="fas fa-bars"></i>';
+        });
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('light-mode');
+            if(body.classList.contains('light-mode')) {
+                body.style.background = '#f8fafc';
+                body.style.color = '#1f2937';
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            } else {
+                body.style.background = '#0a0a0a';
+                body.style.color = '#e5e5e5';
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+            }
+        });
+
+        // Close menu on outside click
+        document.addEventListener('click', (e) => {
+            if(!navLinks.contains(e.target) && !hamburger.contains(e.target)) {
+                navLinks.classList.remove('active');
+                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+            }
+        });
+    </script>
+</body>
+</html>

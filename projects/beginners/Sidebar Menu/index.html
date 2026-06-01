@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Sidebar Menu</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="sidebar" id="sidebar">
+        <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
+        <div class="menu-items">
+            <h2>Menu</h2>
+            <a href="#"><span>🏠</span> Home</a>
+            <a href="#"><span>👤</span> Profile</a>
+            <a href="#"><span>⚙️</span> Settings</a>
+            <a href="#"><span>📧</span> Messages</a>
+            <a href="#"><span>💾</span> Files</a>
+            <a href="#"><span>📊</span> Analytics</a>
+            <a href="#"><span>🛟</span> Help</a>
+        </div>
+        <button class="theme-btn" onclick="toggleTheme()">🌙</button>
+    </div>
+
+    <div class="main-content">
+        <h1>Welcome to Dashboard</h1>
+        <p>This is the main content area. Toggle sidebar and theme.</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

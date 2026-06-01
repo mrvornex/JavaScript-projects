@@ -1,0 +1,64 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100vh;
+  background-color: #0a0d22;
+}
+
+.home-box1 {
+  padding: 140px 90px;
+  background-color: #120184;
+  border-radius: 30px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+.home-box1 h1 {
+  color: white;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 3.8rem;
+  letter-spacing: 6px;
+}
+
+.home-box2 {
+  padding: 120px 90px;
+  background-color: #000d56;
+  border-radius: 30px;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+}
+
+.home-box2 h1 {
+  color: white;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 3.8rem;
+}
+
+.home-box2 p {
+  color: #2be15f;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.8rem;
+}
+
+/* Utility Class */
+.btn {
+  background-color: #5200FF;
+  color: white;
+  padding: 14px 45px;
+  margin-top: 23px;
+  border: none;
+  border-radius: 30px;
+  font-size: 1.2rem;
+  cursor: pointer;
+}

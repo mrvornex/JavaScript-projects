@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Testimonial Slider</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>💬 What People Say</h1>
+        <div class="slider">
+            <div class="slide active">
+                <p class="quote">"This product changed my life! Highly recommended to everyone."</p>
+                <p class="author">- Sarah Johnson, CEO</p>
+            </div>
+            <div class="slide">
+                <p class="quote">"Excellent service and amazing results. Will definitely use again!"</p>
+                <p class="author">- Michael Chen, Developer</p>
+            </div>
+            <div class="slide">
+                <p class="quote">"Outstanding quality and support. Exceeded all expectations."</p>
+                <p class="author">- Priya Sharma, Designer</p>
+            </div>
+        </div>
+        <div class="buttons">
+            <button onclick="prevSlide()">← Prev</button>
+            <button onclick="nextSlide()">Next →</button>
+        </div>
+        <div class="dots">
+            <span class="dot active" onclick="goToSlide(0)"></span>
+            <span class="dot" onclick="goToSlide(1)"></span>
+            <span class="dot" onclick="goToSlide(2)"></span>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

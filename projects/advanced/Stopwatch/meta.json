@@ -1,0 +1,15 @@
+{
+  "title": "Stop watch",
+  "description": "An improved calculator with better UI and logic.",
+  "image": "https://raw.githubusercontent.com/Bilal742/JavaScript-projects/main/Img/image.png",
+    "techStack": [
+    "HTML",
+    "CSS",
+    "JavaScript"
+  ],
+  "features": [
+    "Basic Arithmetic",
+    "Dark Mode",
+    "Responsive Design"
+  ]
+}

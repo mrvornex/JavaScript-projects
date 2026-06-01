@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Text Similarity</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>📊 Text Similarity Checker</h1>
+        <textarea id="text1" placeholder="Enter first text here..."></textarea>
+        <textarea id="text2" placeholder="Enter second text here..."></textarea>
+        <button onclick="checkSimilarity()">Check Similarity</button>
+        <div id="result">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill">0%</div>
+            </div>
+            <p id="similarityText">Similarity: 0%</p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

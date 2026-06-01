@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-commerce Navbar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background: #f9fafb;
+            color: #374151;
+            min-height: 150vh;
+            padding-top: 160px;
+        }
+
+        .top-bar {
+            background: #111827;
+            color: white;
+            padding: 0.5rem 2rem;
+            font-size: 0.9rem;
+        }
+
+        .top-bar-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .announcement {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .announcement i {
+            color: #fbbf24;
+        }
+
+        .top-links a {
+            color: #d1d5db;
+            text-decoration: none;
+            margin-left: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .top-links a:hover {
+            color: white;
+        }
+
+        .ecommerce-nav {
+            position: fixed;
+            top: 40px;
+            width: 100%;
+            background: white;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            z-index: 1000;
+        }
+
+        .nav-main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #111827;
+        }
+
+        .logo i {
+            color: #10b981;
+        }
+
+        .search-container {
+            flex: 1;
+            max-width: 600px;
+            margin: 0 2rem;
+            position: relative;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 0.8rem 1rem 0.8rem 3rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: #10b981;
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+        }
+
+        .search-box::placeholder {
+            color: #9ca3af;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #9ca3af;
+        }
+
+        .nav-icons {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .nav-icon {
+            position: relative;
+            color: #4b5563;
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .nav-icon:hover {
+            color: #111827;
+        }
+
+        .badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #ef4444;
+            color: white;
+            font-size: 0.7rem;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .user-menu {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #10b981, #3b82f6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+        }
+
+        .user-name {
+            font-weight: 500;
+        }
+
+        .categories-bar {
+            background: white;
+            border-top: 1px solid #e5e7eb;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .categories {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0.8rem 2rem;
+            display: flex;
+            gap: 2rem;
+            overflow-x: auto;
+        }
+
+        .category-link {
+            color: #4b5563;
+            text-decoration: none;
+            font-weight: 500;
+            white-space: nowrap;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .category-link:hover {
+            color: #10b981;
+        }
+
+        .category-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #10b981;
+            transition: width 0.3s;
+        }
+
+        .category-link:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #4b5563;
+            cursor: pointer;
+        }
+
+        @media (max-width: 1024px) {
+            body {
+                padding-top: 120px;
+            }
+            
+            .top-bar {
+                display: none;
+            }
+            
+            .ecommerce-nav {
+                top: 0;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .search-container {
+                display: none;
+            }
+            
+            .categories {
+                display: none;
+            }
+            
+            .mobile-search {
+                display: block;
+                width: 100%;
+                padding: 1rem 2rem;
+                background: white;
+                border-top: 1px solid #e5e7eb;
+            }
+            
+            .mobile-search.active {
+                display: block;
+            }
+        }
+
+        .hero {
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #111827;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-img {
+            height: 200px;
+            background: #e5e7eb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #9ca3af;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-price {
+            color: #10b981;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="top-bar-content">
+            <div class="announcement">
+                <i class="fas fa-shipping-fast"></i>
+                <span>Free shipping on orders over $50</span>
+            </div>
+            <div class="top-links">
+                <a href="#">Track Order</a>
+                <a href="#">Help Center</a>
+                <a href="#">Store Locator</a>
+            </div>
+        </div>
+    </div>
+
+    <nav class="ecommerce-nav">
+        <div class="nav-main">
+            <button class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <a href="#" class="logo">
+                <i class="fas fa-shopping-bag"></i>
+                ShopNow
+            </a>
+            
+            <div class="search-container">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" class="search-box" placeholder="Search for products...">
+            </div>
+            
+            <div class="nav-icons">
+                <div class="nav-icon" id="searchToggle">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="nav-icon">
+                    <i class="far fa-heart"></i>
+                    <span class="badge">3</span>
+                </div>
+                <div class="nav-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="badge">5</span>
+                </div>
+                <div class="user-menu">
+                    <div class="user-avatar">JD</div>
+                    <span class="user-name">John</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="categories-bar">
+            <div class="categories">
+                <a href="#" class="category-link">New Arrivals</a>
+                <a href="#" class="category-link">Men's Fashion</a>
+                <a href="#" class="category-link">Women's Fashion</a>
+                <a href="#" class="category-link">Electronics</a>
+                <a href="#" class="category-link">Home & Garden</a>
+                <a href="#" class="category-link">Sports</a>
+                <a href="#" class="category-link">Beauty</a>
+                <a href="#" class="category-link">Deals</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="mobile-search" id="mobileSearch">
+        <div style="position: relative;">
+            <i class="fas fa-search" style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #9ca3af;"></i>
+            <input type="text" placeholder="Search for products..." style="width: 100%; padding: 0.8rem 1rem 0.8rem 3rem; border: 2px solid #e5e7eb; border-radius: 8px;">
+        </div>
+    </div>
+
+    <section class="hero">
+        <h1>Welcome to ShopNow</h1>
+        <p>Discover amazing products at great prices</p>
+        
+        <div class="products">
+            <div class="product-card">
+                <div class="product-img">
+                    <i class="fas fa-tshirt" style="font-size: 3rem;"></i>
+                </div>
+                <div class="product-info">
+                    <div class="product-title">Premium T-Shirt</div>
+                    <div class="product-price">$29.99</div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img">
+                    <i class="fas fa-headphones" style="font-size: 3rem;"></i>
+                </div>
+                <div class="product-info">
+                    <div class="product-title">Wireless Headphones</div>
+                    <div class="product-price">$89.99</div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img">
+                    <i class="fas fa-watch" style="font-size: 3rem;"></i>
+                </div>
+                <div class="product-info">
+                    <div class="product-title">Smart Watch</div>
+                    <div class="product-price">$199.99</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const searchToggle = document.getElementById('searchToggle');
+        const mobileSearch = document.getElementById('mobileSearch');
+        const categories = document.querySelector('.categories');
+
+        hamburger.addEventListener('click', () => {
+            categories.style.display = categories.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        searchToggle.addEventListener('click', () => {
+            mobileSearch.classList.toggle('active');
+        });
+
+        // Cart functionality
+        document.querySelector('.nav-icon:nth-child(3)').addEventListener('click', () => {
+            alert('You have 5 items in your cart');
+        });
+
+        // Wishlist functionality
+        document.querySelector('.nav-icon:nth-child(2)').addEventListener('click', () => {
+            alert('You have 3 items in your wishlist');
+        });
+
+        // Search functionality
+        document.querySelectorAll('.search-box, .mobile-search input').forEach(input => {
+            input.addEventListener('keypress', (e) => {
+                if(e.key === 'Enter') {
+                    alert(`Searching for: ${e.target.value}`);
+                }
+            });
+        });
+
+        // User menu
+        document.querySelector('.user-menu').addEventListener('click', () => {
+            alert('User profile menu');
+        });
+    </script>
+</body>
+</html>

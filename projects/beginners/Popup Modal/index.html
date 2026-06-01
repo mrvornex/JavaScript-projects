@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Popup Modal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>📦 Popup Modal Example</h1>
+        <button onclick="openPopup()">Open Popup</button>
+        <p>Click the button to open a popup modal!</p>
+    </div>
+
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <span onclick="closePopup()" class="close">&times;</span>
+            <h2>Welcome! 👋</h2>
+            <p>This is a simple popup modal. You can put any content here.</p>
+            <button onclick="closePopup()">Close</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

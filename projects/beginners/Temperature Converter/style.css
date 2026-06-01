@@ -1,0 +1,59 @@
+body {
+    background: linear-gradient(135deg, #00b4db, #0083b0);
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', sans-serif;
+    padding: 20px;
+}
+.container {
+    background: white;
+    padding: 70px;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    text-align: center;
+}
+h1 {
+    color: #333;
+    margin-bottom: 30px;
+}
+input {
+    width: 100%;
+    padding: 15px;
+    font-size: 18px;
+    margin: 15px 0;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    text-align: center;
+}
+input:focus {
+    border-color: #00b4db;
+    outline: none;
+}
+.buttons {
+    margin: 25px 0;
+}
+button {
+    background: #00b4db;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 100%;
+}
+button:hover {
+    background: #0083b0;
+}
+.formula {
+    color: #666;
+    font-size: 14px;
+    margin-top: 25px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}

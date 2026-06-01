@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Music Player</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="player">
+        <h1>🎵 Music Player</h1>
+        <img id="albumArt" src="https://picsum.photos/300/300" alt="Album Art">
+        <h2 id="songTitle">Calm Music</h2>
+        <p id="artist">Relaxation Sounds</p>
+        <div class="controls">
+            <button onclick="prevSong()">⏮</button>
+            <button onclick="togglePlay()" id="playBtn">▶️ Play</button>
+            <button onclick="nextSong()">⏭</button>
+        </div>
+        <input type="range" id="progress" value="0" max="100">
+    </div>
+    
+    <audio id="audio"></audio>
+    <script src="script.js"></script>
+</body>
+
+</html>

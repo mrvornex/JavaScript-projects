@@ -1,0 +1,89 @@
+body {
+    background: linear-gradient(135deg, #FF9A8B, #FF6A88);
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', sans-serif;
+    padding: 20px;
+}
+.container {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+}
+h1 {
+    color: #333;
+    margin-bottom: 30px;
+}
+.cookie {
+    width: 200px;
+    height: 100px;
+    background: #F5DEB3;
+    border-radius: 50%;
+    margin: 30px auto;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.5s;
+    box-shadow: inset 0 0 20px rgba(139, 69, 19, 0.3);
+}
+.cookie:hover {
+    transform: scale(1.05);
+}
+.cookie-top, .cookie-bottom {
+    position: absolute;
+    width: 100%;
+    height: 50%;
+    background: #D2B48C;
+    border-radius: 100px 100px 0 0;
+}
+.cookie-bottom {
+    bottom: 0;
+    border-radius: 0 0 100px 100px;
+}
+.cookie.opened {
+    transform: scale(1.2) rotate(180deg);
+}
+.cookie.opened .cookie-top {
+    transform: translateY(-20px);
+}
+.cookie.opened .cookie-bottom {
+    transform: translateY(20px);
+}
+button {
+    background: linear-gradient(to right, #FF9A8B, #FF6A88);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 30px 0;
+    font-weight: bold;
+}
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(255, 106, 136, 0.3);
+}
+.fortune {
+    background: #FFF8DC;
+    padding: 25px;
+    border-radius: 15px;
+    margin-top: 20px;
+    border-left: 5px solid #FFD700;
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#fortuneText {
+    font-size: 1.3rem;
+    font-style: italic;
+    color: #333;
+    line-height: 1.6;
+}

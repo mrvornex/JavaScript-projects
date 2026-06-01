@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LexiPro Dictionary</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+   <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-book-open"></i>
+                <h1>LexiPro Dictionary</h1>
+            </div>
+            <p class="tagline">Look up definitions, pronunciations, and examples for any English word</p>
+        </header>
+        
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="Enter a word to look up (e.g., 'dictionary', 'eloquent', 'serendipity')">
+            <button class="search-btn">
+                <i class="fas fa-search"></i> Search
+            </button>
+        </div>
+        
+        <div class="word-of-day">
+            <h3><i class="fas fa-star"></i> Word of the Day</h3>
+            <div class="word">Ephemeral</div>
+            <div class="meaning">Lasting for a very short time; transient; fleeting.</div>
+        </div>
+        
+        <div class="loader">
+            <div class="spinner"></div>
+            <p>Looking up definition...</p>
+        </div>
+        
+        <div class="error-message">
+            <p><i class="fas fa-exclamation-circle"></i> Word not found. Please check your spelling or try another word.</p>
+        </div>
+        
+        <div class="result-container">
+            <div class="result-header">
+                <div class="word-info">
+                    <div class="word-title">
+                        <span id="word">Dictionary</span>
+                        <button class="audio-btn" id="audio-btn">
+                            <i class="fas fa-volume-up"></i>
+                        </button>
+                    </div>
+                    <div class="phonetic" id="phonetic">/ˈdɪkʃəˌnɛri/</div>
+                </div>
+            </div>
+            
+            <div class="meanings-container">
+                <div class="meaning-section">
+                    <div class="part-of-speech">
+                        <i class="fas fa-font"></i> Noun
+                    </div>
+                    <div class="meaning-list">
+                        <div class="meaning-item">
+                            A book or electronic resource that lists the words of a language (typically in alphabetical order) and gives their meaning, or gives the equivalent words in a different language, often also providing information about pronunciation, origin, and usage.
+                            <div class="example">"I'll look up 'onomatopoeia' in the dictionary."</div>
+                        </div>
+                        <div class="meaning-item">
+                            A reference work that lists words and their definitions, often organized alphabetically.
+                            <div class="example">"The dictionary on my desk is over a thousand pages long."</div>
+                        </div>
+                    </div>
+                    <div class="synonyms">
+                        <span class="synonym-tag">lexicon</span>
+                        <span class="synonym-tag">wordbook</span>
+                        <span class="synonym-tag">vocabulary</span>
+                        <span class="synonym-tag">glossary</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="recent-searches">
+            <h3><i class="fas fa-history"></i> Recent Searches</h3>
+            <div class="recent-words">
+                <!-- Recent words will be dynamically added here -->
+            </div>
+        </div>
+        
+        <footer>
+            <p>LexiPro Dictionary &copy; 2023 | Powered by Free Dictionary API</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

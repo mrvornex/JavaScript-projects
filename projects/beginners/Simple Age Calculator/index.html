@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Age Calculator</title>
+   <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Simple Age Calculator</h1>
+        <p class="subtitle">Perfect for beginners - Find out your exact age</p>
+        
+        <div class="form-group">
+            <label for="birthdate">Select Your Birth Date:</label>
+            <input type="date" id="birthdate" max="">
+        </div>
+        
+        <div class="button-group">
+            <button class="calculate-btn" id="calculateBtn">Calculate My Age</button>
+            <button class="reset-btn" id="resetBtn">Reset</button>
+        </div>
+        
+        <div class="result-container" id="resultContainer">
+            <div class="result-title">Your Age Is:</div>
+            <div class="age-display" id="ageDisplay">0 years</div>
+            
+            <div class="breakdown">
+                <div class="age-unit">
+                    <div class="unit-value" id="years">0</div>
+                    <div class="unit-label">Years</div>
+                </div>
+                <div class="age-unit">
+                    <div class="unit-value" id="months">0</div>
+                    <div class="unit-label">Months</div>
+                </div>
+                <div class="age-unit">
+                    <div class="unit-value" id="days">0</div>
+                    <div class="unit-label">Days</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="instruction">
+            <strong>How to use:</strong> Select your birth date using the calendar picker and click "Calculate My Age". The result will show your exact age in years, months, and days.
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

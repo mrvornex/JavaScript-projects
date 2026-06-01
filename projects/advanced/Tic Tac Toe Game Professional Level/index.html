@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe Pro | Professional Game</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>❌</text></svg>">
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header">
+            <h1 class="game-title">
+                <i class="fas fa-gamepad"></i>
+                <span class="title-text">Tic Tac Toe <span class="pro-badge">PRO</span></span>
+            </h1>
+            <p class="game-tagline">The Ultimate Strategy Game Experience</p>
+        </header>
+
+        <!-- Game Dashboard -->
+        <div class="dashboard">
+            <!-- Player Stats -->
+            <div class="player-stats">
+                <div class="player-card player-x">
+                    <div class="player-icon">
+                        <i class="fas fa-times"></i>
+                    </div>
+                    <div class="player-info">
+                        <h3 class="player-name">Player X</h3>
+                        <div class="player-score">
+                            <span class="score-label">Wins:</span>
+                            <span class="score-value" id="scoreX">0</span>
+                        </div>
+                    </div>
+                    <div class="player-turn-indicator" id="turnX">
+                        <i class="fas fa-play-circle"></i>
+                    </div>
+                </div>
+
+                <div class="vs-section">
+                    <span class="vs-text">VS</span>
+                </div>
+
+                <div class="player-card player-o">
+                    <div class="player-icon">
+                        <i class="far fa-circle"></i>
+                    </div>
+                    <div class="player-info">
+                        <h3 class="player-name">Player O</h3>
+                        <div class="player-score">
+                            <span class="score-label">Wins:</span>
+                            <span class="score-value" id="scoreO">0</span>
+                        </div>
+                    </div>
+                    <div class="player-turn-indicator" id="turnO">
+                        <i class="fas fa-play-circle"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Game Controls -->
+            <div class="game-controls">
+                <div class="game-mode">
+                    <h3><i class="fas fa-robot"></i> Game Mode</h3>
+                    <div class="mode-buttons">
+                        <button class="mode-btn active" data-mode="pvp">
+                            <i class="fas fa-users"></i>
+                            <span>Player vs Player</span>
+                        </button>
+                        <button class="mode-btn" data-mode="pvc">
+                            <i class="fas fa-robot"></i>
+                            <span>Player vs AI</span>
+                        </button>
+                        <button class="mode-btn" data-mode="cvc">
+                            <i class="fas fa-microchip"></i>
+                            <span>AI vs AI</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="difficulty-level">
+                    <h3><i class="fas fa-brain"></i> AI Difficulty</h3>
+                    <div class="difficulty-buttons">
+                        <button class="difficulty-btn active" data-difficulty="easy">
+                            <i class="fas fa-smile"></i>
+                            <span>Easy</span>
+                        </button>
+                        <button class="difficulty-btn" data-difficulty="medium">
+                            <i class="fas fa-meh"></i>
+                            <span>Medium</span>
+                        </button>
+                        <button class="difficulty-btn" data-difficulty="hard">
+                            <i class="fas fa-frown"></i>
+                            <span>Hard</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="game-actions">
+                    <button id="newGame" class="action-btn new-game">
+                        <i class="fas fa-plus-circle"></i>
+                        <span>New Game</span>
+                    </button>
+                    <button id="resetScore" class="action-btn reset-score">
+                        <i class="fas fa-redo"></i>
+                        <span>Reset Score</span>
+                    </button>
+                    <button id="undoMove" class="action-btn undo-move">
+                        <i class="fas fa-undo"></i>
+                        <span>Undo Move</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Game Board -->
+        <div class="game-board-container">
+            <div class="game-status" id="gameStatus">
+                <span class="status-text">Player X's Turn</span>
+                <span class="status-icon"><i class="fas fa-hourglass-half"></i></span>
+            </div>
+
+            <div class="game-board" id="gameBoard">
+                <!-- Board cells will be generated by JavaScript -->
+            </div>
+
+            <div class="game-timer">
+                <div class="timer-display">
+                    <i class="fas fa-clock"></i>
+                    <span id="timer">00:00</span>
+                </div>
+                <div class="move-counter">
+                    <i class="fas fa-step-forward"></i>
+                    <span id="moveCount">Move: 0</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Game History & Stats -->
+        <div class="game-history">
+            <div class="history-header">
+                <h3><i class="fas fa-history"></i> Game History</h3>
+                <button id="clearHistory" class="clear-history-btn">
+                    <i class="fas fa-trash"></i>
+                    Clear
+                </button>
+            </div>
+            <div class="history-list" id="historyList">
+                <!-- Game history will be added here -->
+            </div>
+
+            <div class="game-stats">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-value" id="totalGames">0</span>
+                        <span class="stat-label">Games Played</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-value" id="winRate">0%</span>
+                        <span class="stat-label">Win Rate</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-value" id="fastestWin">0s</span>
+                        <span class="stat-label">Fastest Win</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Game Instructions -->
+        <div class="instructions">
+            <div class="instructions-toggle">
+                <h3><i class="fas fa-info-circle"></i> How to Play</h3>
+                <button id="toggleInstructions" class="toggle-btn">
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+            </div>
+            <div class="instructions-content" id="instructionsContent">
+                <div class="instruction-item">
+                    <div class="instruction-icon">
+                        <i class="fas fa-mouse-pointer"></i>
+                    </div>
+                    <div class="instruction-text">
+                        <strong>Click</strong> on any empty cell to place your mark (X or O)
+                    </div>
+                </div>
+                <div class="instruction-item">
+                    <div class="instruction-icon">
+                        <i class="fas fa-flag-checkered"></i>
+                    </div>
+                    <div class="instruction-text">
+                        <strong>Objective:</strong> Get 3 of your marks in a row (horizontal, vertical, or diagonal)
+                    </div>
+                </div>
+                <div class="instruction-item">
+                    <div class="instruction-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="instruction-text">
+                        <strong>AI Modes:</strong> Play against different difficulty levels of AI
+                    </div>
+                </div>
+                <div class="instruction-item">
+                    <div class="instruction-icon">
+                        <i class="fas fa-undo"></i>
+                    </div>
+                    <div class="instruction-text">
+                        <strong>Undo Move:</strong> Click the undo button to revert your last move
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4><i class="fas fa-code"></i> Developed With</h4>
+                    <p>HTML5, CSS3 & JavaScript</p>
+                </div>
+                <div class="footer-section">
+                    <h4><i class="fas fa-feather-alt"></i> Features</h4>
+                    <p>Multiple Game Modes • AI Opponent • Game History • Statistics</p>
+                </div>
+                <div class="footer-section">
+                    <h4><i class="fas fa-star"></i> Rating</h4>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Tic Tac Toe Pro | Professional Gaming Experience</p>
+            </div>
+        </footer>
+
+        <!-- Win Animation -->
+        <div class="win-animation" id="winAnimation">
+            <div class="confetti"></div>
+            <div class="confetti"></div>
+            <div class="confetti"></div>
+            <div class="confetti"></div>
+            <div class="confetti"></div>
+            <div class="confetti"></div>
+            <div class="confetti"></div>
+            <div class="confetti"></div>
+            <div class="win-message">
+                <h2 id="winnerMessage">Player X Wins!</h2>
+                <div class="celebration-icons">
+                    <i class="fas fa-trophy"></i>
+                    <i class="fas fa-fireworks"></i>
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <button id="closeAnimation" class="close-btn">
+                    <i class="fas fa-times"></i>
+                    Continue Playing
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Audio Elements -->
+    <audio id="clickSound" preload="auto">
+        <source src="https://assets.mixkit.co/sfx/preview/mixkit-select-click-1109.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="winSound" preload="auto">
+        <source src="https://assets.mixkit.co/sfx/preview/mixkit-winning-chimes-2015.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="drawSound" preload="auto">
+        <source src="https://assets.mixkit.co/sfx/preview/mixkit-game-show-wrong-answer-buzz-950.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+</html>

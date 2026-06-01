@@ -1,0 +1,15 @@
+{
+  "title": "Music Player",
+  "description": "A JavaScript music player with play, pause, and track controls in a simple interface.",
+  "image": "https://raw.githubusercontent.com/Bilal742/JavaScript-projects/main/Img/image48.png",
+  "techStack": [
+    "HTML",
+    "CSS",
+    "JavaScript"
+  ],
+  "features": [
+    "Basic Arithmetic",
+    "Dark Mode",
+    "Responsive Design"
+  ]
+}

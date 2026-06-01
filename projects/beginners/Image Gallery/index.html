@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Image Gallery</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>🖼️ Simple Image Gallery</h1>
+        <div class="gallery">
+            <img src="https://picsum.photos/300/200?random=1" onclick="openModal(this)">
+            <img src="https://picsum.photos/300/200?random=2" onclick="openModal(this)">
+            <img src="https://picsum.photos/300/200?random=3" onclick="openModal(this)">
+            <img src="https://picsum.photos/300/200?random=4" onclick="openModal(this)">
+            <img src="https://picsum.photos/300/200?random=5" onclick="openModal(this)">
+            <img src="https://picsum.photos/300/200?random=6" onclick="openModal(this)">
+        </div>
+    </div>
+
+    <div id="modal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImg">
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

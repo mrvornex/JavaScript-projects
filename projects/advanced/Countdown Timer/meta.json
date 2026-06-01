@@ -1,0 +1,15 @@
+{
+  "title": "Countdown Timer",
+  "description": "A JavaScript countdown timer app with a clear display and real-time countdown to a target date/time.",
+  "image": "https://raw.githubusercontent.com/Bilal742/JavaScript-projects/main/Img/image39.png",
+  "techStack": [
+    "HTML",
+    "CSS",
+    "JavaScript"
+  ],
+  "features": [
+    "Basic Arithmetic",
+    "Dark Mode",
+    "Responsive Design"
+  ]
+}

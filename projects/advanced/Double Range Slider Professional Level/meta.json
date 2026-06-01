@@ -1,0 +1,15 @@
+{
+  "title": "Double Range Slider",
+  "description": "A JavaScript double range slider for selecting min and max values with smooth, interactive controls.",
+  "image": "https://raw.githubusercontent.com/Bilal742/JavaScript-projects/main/Img/image40.png",
+  "techStack": [
+    "HTML",
+    "CSS",
+    "JavaScript"
+  ],
+  "features": [
+    "Basic Arithmetic",
+    "Dark Mode",
+    "Responsive Design"
+  ]
+} 

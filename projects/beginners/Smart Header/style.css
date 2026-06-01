@@ -1,0 +1,108 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(180deg, #f5f7fa, #c3cfe2);
+    min-height: 150vh;
+}
+
+header {
+    background: white;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+header.scrolled {
+    padding: 15px 40px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+    color: #6c5ce7;
+    transition: all 0.3s;
+}
+
+header.scrolled .logo {
+    font-size: 24px;
+    color: #2d3436;
+}
+
+nav {
+    display: flex;
+    gap: 30px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #636e72;
+    font-weight: 500;
+    padding: 8px 0;
+    position: relative;
+    transition: all 0.3s;
+}
+
+nav a:hover {
+    color: #6c5ce7;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #6c5ce7;
+    transition: width 0.3s;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+header.scrolled nav a {
+    color: #2d3436;
+}
+
+.content {
+    margin-top: 100px;
+    padding: 40px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 3rem;
+    color: #2d3436;
+    margin-bottom: 40px;
+}
+
+.scroll-space {
+    height: 800px;
+}
+
+#scrollInfo {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #6c5ce7;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: bold;
+}

@@ -1,0 +1,95 @@
+:root {
+    --sidebar-bg: #2c3e50;
+    --main-bg: #ecf0f1;
+    --text-color: #333;
+    --menu-hover: #34495e;
+    --sidebar-width: 250px;
+}
+.dark-theme {
+    --sidebar-bg: #1a1a2e;
+    --main-bg: #16213e;
+    --text-color: #f1f1f1;
+    --menu-hover: #0f3460;
+}
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: var(--main-bg);
+    color: var(--text-color);
+    transition: all 0.3s;
+    display: flex;
+    min-height: 100vh;
+}
+.sidebar {
+    background: var(--sidebar-bg);
+    width: var(--sidebar-width);
+    height: 100vh;
+    position: fixed;
+    transition: all 0.3s;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.sidebar.collapsed {
+    width: 70px;
+}
+.toggle-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    margin-bottom: 30px;
+}
+.menu-items {
+    display: flex;
+    flex-direction: column;
+}
+.menu-items h2 {
+    color: white;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+.menu-items a {
+    color: white;
+    text-decoration: none;
+    padding: 15px;
+    margin: 5px 0;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    transition: background 0.3s;
+}
+.menu-items a:hover {
+    background: var(--menu-hover);
+}
+.menu-items span {
+    margin-right: 15px;
+    font-size: 20px;
+}
+.sidebar.collapsed h2,
+.sidebar.collapsed span {
+    display: none;
+}
+.sidebar.collapsed a {
+    justify-content: center;
+    padding: 15px 0;
+}
+.theme-btn {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+}
+.main-content {
+    margin-left: var(--sidebar-width);
+    padding: 40px;
+    flex: 1;
+    transition: margin-left 0.3s;
+}
+.sidebar.collapsed + .main-content {
+    margin-left: 70px;
+}

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>N-o-r-m-a-l_q-u-i-z</title>
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+</head>
+<style>
+  #result {
+    background-color: #120184;
+    color: white;
+    border-radius: 20px;
+    padding: 50px;
+    text-align: center;
+    font-size: 2rem;
+    animation: fade 2s forwards;
+  }
+  
+  /* Animation effect */
+  @keyframes fade {
+    from { opacity: 0; transform: scale(0.8);}
+    to { opacity: 1; transform: scale(1);}
+  }
+  
+  .fade-in {
+    animation: fade 1.5s ease-in-out;
+  }
+  
+  #result button {
+    margin-top: 20px;
+    padding: 12px 30px;
+    background-color: #5200ff;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+  
+  </style>
+<body>
+  <!DOCTYPE html>
+  <html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>N-o-r-m-a-l_q-u-i-z</title>
+    <link rel="stylesheet" href="Css/quiz.css" />
+  </head>
+
+  <body onload="nextQuestion()">
+    <div class="main">
+      <div class="home-container">
+        <div class="home">
+          <div class="home-box1">
+            <div class="icon">
+              <a href="index1.html"><i class="bx bx-arrow-back"></i></a>
+            </div>
+          </div>
+          <div class="home-box2">
+            <h1>Css</h1>
+          </div>
+
+          <div class="home-box3" style="visibility: hidden">
+            <h1>Level up</h1>
+          </div>
+        </div>
+      </div>
+
+      <p id="ques"></p>
+      <br />
+      <input id="html" value="1" onclick="clicked()" name="options" type="radio" />
+      <label for="html" id="opt1"></label>
+      <br />
+      <br />
+      <input id="css" value="2" onclick="clicked()" name="options" type="radio" />
+      <label for="css" id="opt2"></label>
+      <br />
+      <br />
+      <input id="jawa" value="3" onclick="clicked()" name="options" type="radio" />
+      <label for="jawa" id="opt3"></label>
+      <br />
+      <br />
+      <button id="btn" disabled onclick="nextQuestion()">Next</button>
+    </div>
+
+    <div id="result" style="
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  ">
+<h1 id="score"></h1>
+<button onclick="location.reload()">Play Again</button>
+</div>
+    <script src="Js/quiz.js"></script>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+  </body>
+
+  </html>
+</body>
+
+</html>

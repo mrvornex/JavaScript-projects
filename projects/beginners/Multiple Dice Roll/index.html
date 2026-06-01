@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Dice Roll</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>🎲 Dice Roller</h1>
+        <input type="number" id="diceCount" min="1" max="10" value="2">
+        <button onclick="rollDice()">Roll Dice</button>
+        <div class="dice-container" id="diceContainer"></div>
+        <div class="result">
+            Total: <span id="total">0</span>
+        </div>
+        <button onclick="rollHistory()" class="history-btn">Show History</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

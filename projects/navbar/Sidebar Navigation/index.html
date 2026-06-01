@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sidebar Navigation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            display: flex;
+            min-height: 100vh;
+            background: #f5f5f5;
+        }
+
+        .sidebar {
+            width: 250px;
+            background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+            color: white;
+            height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 0;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .sidebar.collapsed {
+            width: 70px;
+        }
+
+        .sidebar-header {
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: white;
+            text-decoration: none;
+        }
+
+        .logo i {
+            font-size: 1.5rem;
+            color: #60a5fa;
+        }
+
+        .logo-text {
+            transition: opacity 0.3s;
+        }
+
+        .sidebar.collapsed .logo-text {
+            opacity: 0;
+            width: 0;
+            overflow: hidden;
+        }
+
+        .toggle-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .toggle-btn:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        .nav-menu {
+            padding: 1rem 0;
+        }
+
+        .nav-title {
+            padding: 0.8rem 1.5rem;
+            color: #94a3b8;
+            font-size: 0.8rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: opacity 0.3s;
+        }
+
+        .sidebar.collapsed .nav-title {
+            opacity: 0;
+        }
+
+        .nav-links {
+            list-style: none;
+        }
+
+        .nav-item {
+            margin: 0.3rem 0.8rem;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #cbd5e1;
+            text-decoration: none;
+            padding: 0.8rem 1rem;
+            border-radius: 8px;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            background: rgba(255,255,255,0.1);
+            color: white;
+        }
+
+        .nav-link.active {
+            background: rgba(96, 165, 250, 0.2);
+            color: #60a5fa;
+        }
+
+        .nav-link i {
+            font-size: 1.1rem;
+            min-width: 20px;
+            text-align: center;
+        }
+
+        .link-text {
+            transition: opacity 0.3s;
+        }
+
+        .sidebar.collapsed .link-text {
+            opacity: 0;
+            width: 0;
+            overflow: hidden;
+        }
+
+        .badge {
+            background: #ef4444;
+            color: white;
+            font-size: 0.7rem;
+            padding: 2px 6px;
+            border-radius: 10px;
+            margin-left: auto;
+        }
+
+        .sidebar.collapsed .badge {
+            position: absolute;
+            right: 5px;
+            top: 5px;
+        }
+
+        .submenu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            padding-left: 1.5rem;
+        }
+
+        .submenu.active {
+            max-height: 500px;
+        }
+
+        .submenu-link {
+            display: block;
+            padding: 0.6rem 1rem;
+            color: #94a3b8;
+            text-decoration: none;
+            border-left: 2px solid rgba(255,255,255,0.1);
+            transition: all 0.3s;
+        }
+
+        .submenu-link:hover {
+            color: white;
+            border-left-color: #60a5fa;
+            background: rgba(255,255,255,0.05);
+        }
+
+        .has-dropdown .nav-link {
+            position: relative;
+        }
+
+        .has-dropdown .nav-link::after {
+            content: '\f078';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            margin-left: auto;
+            transition: transform 0.3s;
+        }
+
+        .has-dropdown.active .nav-link::after {
+            transform: rotate(180deg);
+        }
+
+        .main-content {
+            flex: 1;
+            margin-left: 250px;
+            padding: 2rem;
+            transition: margin-left 0.3s ease;
+        }
+
+        .main-content.expanded {
+            margin-left: 70px;
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: white;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            width: 300px;
+        }
+
+        .search-box input {
+            border: none;
+            outline: none;
+            flex: 1;
+            padding: 0.5rem;
+        }
+
+        .search-box i {
+            color: #9ca3af;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .user-profile img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #3b82f6;
+        }
+
+        .content h1 {
+            color: #1f2937;
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+            
+            .sidebar.active {
+                transform: translateX(0);
+            }
+            
+            .main-content {
+                margin-left: 0;
+            }
+            
+            .mobile-toggle {
+                display: block;
+            }
+        }
+
+        .mobile-toggle {
+            display: none;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1001;
+            background: #1e293b;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <button class="mobile-toggle" id="mobileToggle">
+        <i class="fas fa-bars"></i>
+    </button>
+    
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <a href="#" class="logo">
+                <i class="fas fa-layout-group"></i>
+                <span class="logo-text">Dashboard</span>
+            </a>
+            <button class="toggle-btn" id="toggleBtn">
+                <i class="fas fa-angle-left"></i>
+            </button>
+        </div>
+        
+        <div class="nav-menu">
+            <div class="nav-title">Main Menu</div>
+            <ul class="nav-links">
+                <li class="nav-item">
+                    <a href="#" class="nav-link active">
+                        <i class="fas fa-home"></i>
+                        <span class="link-text">Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-chart-line"></i>
+                        <span class="link-text">Analytics</span>
+                        <span class="badge">3</span>
+                    </a>
+                </li>
+                <li class="nav-item has-dropdown">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="link-text">E-commerce</span>
+                    </a>
+                    <div class="submenu">
+                        <a href="#" class="submenu-link">Products</a>
+                        <a href="#" class="submenu-link">Orders</a>
+                        <a href="#" class="submenu-link">Customers</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span class="link-text">Calendar</span>
+                    </a>
+                </li>
+            </ul>
+            
+            <div class="nav-title">Support</div>
+            <ul class="nav-links">
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-cog"></i>
+                        <span class="link-text">Settings</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-question-circle"></i>
+                        <span class="link-text">Help Center</span>
+                    </a>
+                </li>
+                <li class="nav-item has-dropdown">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-user-friends"></i>
+                        <span class="link-text">Users</span>
+                    </a>
+                    <div class="submenu">
+                        <a href="#" class="submenu-link">All Users</a>
+                        <a href="#" class="submenu-link">Add User</a>
+                        <a href="#" class="submenu-link">Roles</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    
+    <main class="main-content" id="mainContent">
+        <div class="top-bar">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search...">
+            </div>
+            <div class="user-profile">
+                <img src="https://ui-avatars.com/api/?name=John+Doe&background=3b82f6&color=fff" alt="User">
+                <span>John Doe</span>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>Sidebar Navigation</h1>
+            <p>Collapsible sidebar with dropdown menus</p>
+        </div>
+    </main>
+
+    <script>
+        const sidebar = document.getElementById('sidebar');
+        const toggleBtn = document.getElementById('toggleBtn');
+        const mainContent = document.getElementById('mainContent');
+        const mobileToggle = document.getElementById('mobileToggle');
+        const dropdowns = document.querySelectorAll('.has-dropdown');
+        
+        // Toggle sidebar collapse/expand
+        toggleBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('collapsed');
+            mainContent.classList.toggle('expanded');
+            
+            // Rotate toggle icon
+            toggleBtn.innerHTML = sidebar.classList.contains('collapsed')
+                ? '<i class="fas fa-angle-right"></i>'
+                : '<i class="fas fa-angle-left"></i>';
+        });
+        
+        // Mobile toggle
+        mobileToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
+        });
+        
+        // Dropdown functionality
+        dropdowns.forEach(dropdown => {
+            const link = dropdown.querySelector('.nav-link');
+            const submenu = dropdown.querySelector('.submenu');
+            
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                // Close other dropdowns
+                dropdowns.forEach(other => {
+                    if(other !== dropdown) {
+                        other.classList.remove('active');
+                        other.querySelector('.submenu').style.maxHeight = '0';
+                    }
+                });
+                
+                // Toggle current dropdown
+                dropdown.classList.toggle('active');
+                if(dropdown.classList.contains('active')) {
+                    submenu.style.maxHeight = submenu.scrollHeight + 'px';
+                } else {
+                    submenu.style.maxHeight = '0';
+                }
+            });
+        });
+        
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', (e) => {
+            if(window.innerWidth <= 768 && 
+               !sidebar.contains(e.target) && 
+               !mobileToggle.contains(e.target) &&
+               sidebar.classList.contains('active')) {
+                sidebar.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+ "title": "Simple Navbar",
+  "description": "This is a basic responsive navbar with mobile hamburger menu.",
+  "image": "https://raw.githubusercontent.com/Bilal742/JavaScript-projects/main/Navbars Images/bg.png",
+  "techStack": [
+    "HTML",
+    "CSS",
+    "JavaScript"
+  ],
+  "features": [
+    "Basic Arithmetic",
+    "Dark Mode",
+    "Responsive Design"
+  ]
+} 

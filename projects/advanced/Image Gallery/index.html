@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Next-Level Image Gallery</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Next-Level Gallery</h1>
+            <p>Click on any image to view it in full size</p>
+            <div class="controls">
+                <button id="shuffleBtn" class="btn"><i class="fas fa-random"></i> Shuffle</button>
+                <button id="filterAll" class="btn active">All</button>
+                <button id="filterNature" class="btn">Nature</button>
+                <button id="filterUrban" class="btn">Urban</button>
+                <button id="filterAbstract" class="btn">Abstract</button>
+                <div class="search-container">
+                    <input type="text" id="searchInput" placeholder="Search images...">
+                    <i class="fas fa-search"></i>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <div class="gallery" id="imageGallery"></div>
+        </main>
+
+        <div class="lightbox" id="lightbox">
+            <div class="lightbox-content">
+                <button class="close-btn" id="closeLightbox">&times;</button>
+                <button class="nav-btn prev-btn" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
+                <button class="nav-btn next-btn" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
+                <img id="lightboxImage" src="" alt="Enlarged view">
+                <div class="image-info">
+                    <h3 id="imageTitle"></h3>
+                    <p id="imageDescription"></p>
+                    <div class="image-meta">
+                        <span id="imageCategory"></span>
+                        <span id="imageDate"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Gallery Images: 12 | Filtered: <span id="imageCount">12</span></p>
+            <button id="loadMore" class="btn load-more"><i class="fas fa-plus"></i> Load More</button>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

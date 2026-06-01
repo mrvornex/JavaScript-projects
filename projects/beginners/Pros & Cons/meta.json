@@ -1,0 +1,15 @@
+{
+  "title": "Pros & Cons",
+  "description": "**Pros & Cons** is a simple tool that helps compare advantages and disadvantages of a topic side by side.",
+  "image": "https://raw.githubusercontent.com/Bilal742/JavaScript-projects/main/Img/image61.png",
+  "techStack": [
+    "HTML",
+    "CSS",
+    "JavaScript"
+  ],
+  "features": [
+    "Basic Arithmetic",
+    "Dark Mode",
+    "Responsive Design"
+  ]
+}

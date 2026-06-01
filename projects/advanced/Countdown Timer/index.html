@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Launch | Coming Soon</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Animated Background -->
+    <div class="bg-container" id="particles"></div>
+    <div class="grid-overlay"></div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="header">
+            <div class="logo">Quantum Launch</div>
+            <div class="subtitle">Preparing for the future</div>
+        </div>
+
+        <h1 class="hologram-title">Coming Soon</h1>
+
+        <!-- Countdown Timer -->
+        <div class="countdown">
+            <div class="time-unit">
+                <div class="time-card">
+                    <div class="time-card-front">
+                        <div class="time-value" id="days">19</div>
+                        <div class="time-label">Days</div>
+                    </div>
+                    <div class="time-card-back">
+                        <div class="time-value" id="days-back">19</div>
+                        <div class="time-label">Until Launch</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="time-unit">
+                <div class="time-card">
+                    <div class="time-card-front">
+                        <div class="time-value" id="hours">04</div>
+                        <div class="time-label">Hours</div>
+                    </div>
+                    <div class="time-card-back">
+                        <div class="time-value" id="hours-back">04</div>
+                        <div class="time-label">Until Launch</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="time-unit">
+                <div class="time-card">
+                    <div class="time-card-front">
+                        <div class="time-value" id="mins">51</div>
+                        <div class="time-label">Minutes</div>
+                    </div>
+                    <div class="time-card-back">
+                        <div class="time-value" id="mins-back">51</div>
+                        <div class="time-label">Until Launch</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="time-unit">
+                <div class="time-card">
+                    <div class="time-card-front">
+                        <div class="time-value" id="secs">07</div>
+                        <div class="time-label">Seconds</div>
+                    </div>
+                    <div class="time-card-back">
+                        <div class="time-value" id="secs-back">07</div>
+                        <div class="time-label">Until Launch</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="progress-container">
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
+        <div class="progress-text">
+            <span>Development Started</span>
+            <span id="progress-text">65% Complete</span>
+            <span>Launch Ready</span>
+        </div>
+
+        <!-- Message -->
+        <div class="message" id="message">
+            <i class="fas fa-quote-left" style="color: #00ff9d; margin-right: 10px;"></i>
+            We're building something extraordinary that will revolutionize the digital landscape. Stay tuned for the
+            future!
+            <i class="fas fa-quote-right" style="color: #00ff9d; margin-left: 10px;"></i>
+        </div>
+
+        <!-- Notify Form -->
+        <form class="notify-form" id="notify-form">
+            <input type="email" class="email-input" placeholder="Enter your email for launch notification" required>
+            <button type="submit" class="notify-btn">Notify Me</button>
+        </form>
+
+        <!-- Social Links -->
+        <div class="social-links">
+            <a href="#" class="social-icon">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="social-icon">
+                <i class="fab fa-discord"></i>
+            </a>
+            <a href="#" class="social-icon">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="#" class="social-icon">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="#" class="social-icon">
+                <i class="fab fa-telegram-plane"></i>
+            </a>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>© 2023 Quantum Launch. All rights reserved. | Preparing for the next evolution.</p>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

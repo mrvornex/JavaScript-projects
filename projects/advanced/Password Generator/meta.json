@@ -1,0 +1,15 @@
+{
+  "title": "Password Generator",
+  "description": "An advanced JavaScript password generator with customizable length and character types, fully processed locally for privacy.",
+  "image": "https://raw.githubusercontent.com/Bilal742/JavaScript-projects/main/Img/image6.png",
+  "techStack": [
+    "HTML",
+    "CSS",
+    "JavaScript"
+  ],
+  "features": [
+    "Basic Arithmetic",
+    "Dark Mode",
+    "Responsive Design"
+  ]
+} 

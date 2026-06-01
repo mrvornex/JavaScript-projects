@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Pros & Cons</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>✅❌ Pros & Cons List Maker</h1>
+        <input type="text" id="itemInput" placeholder="Enter item...">
+        <div class="buttons">
+            <button onclick="addItem('pro')">Add Pro ✅</button>
+            <button onclick="addItem('con')">Add Con ❌</button>
+        </div>
+        <div class="lists">
+            <div class="pros">
+                <h2>✅ Pros</h2>
+                <ul id="proList"></ul>
+            </div>
+            <div class="cons">
+                <h2>❌ Cons</h2>
+                <ul id="conList"></ul>
+            </div>
+        </div>
+        <button onclick="clearAll()" class="clearBtn">Clear All</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

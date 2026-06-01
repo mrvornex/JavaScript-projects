@@ -1,0 +1,68 @@
+body {
+    background: linear-gradient(135deg, #00c6ff, #0072ff);
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', sans-serif;
+    padding: 20px;
+}
+.container {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+}
+h1 {
+    color: #333;
+    margin-bottom: 30px;
+}
+input {
+    width: 100%;
+    padding: 15px;
+    font-size: 18px;
+    margin: 15px 0;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+input:focus {
+    border-color: #0072ff;
+    outline: none;
+}
+button {
+    background: linear-gradient(to right, #00c6ff, #0072ff);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 100%;
+    margin: 20px 0;
+    font-weight: bold;
+}
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 114, 255, 0.3);
+}
+#result {
+    margin: 25px 0;
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    min-height: 30px;
+}
+.true { background: #d4edda; color: #155724; }
+.false { background: #f8d7da; color: #721c24; }
+.examples {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+    color: #666;
+}

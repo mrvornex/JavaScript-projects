@@ -1,0 +1,175 @@
+ * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(45deg, #2c3e50, #4a6491);
+            padding: 20px;
+        }
+
+        .calculator {
+            width: 100%;
+            max-width: 400px;
+            background: #1a1a2e;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .display {
+            padding: 30px 20px;
+            background: #16213e;
+            text-align: right;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .previous-operand {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.7);
+            min-height: 24px;
+            margin-bottom: 10px;
+            word-break: break-all;
+        }
+
+        .current-operand {
+            font-size: 3rem;
+            color: white;
+            font-weight: 300;
+            word-break: break-all;
+            min-height: 60px;
+        }
+
+        .buttons-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        button {
+            border: none;
+            padding: 25px 10px;
+            font-size: 1.3rem;
+            cursor: pointer;
+            background: #1a1a2e;
+            color: white;
+            transition: all 0.2s;
+        }
+
+        button:hover {
+            background: #252547;
+        }
+
+        button:active {
+            background: #2a2a5a;
+            transform: scale(0.95);
+        }
+
+        .number-btn {
+            background: #0f3460;
+        }
+
+        .number-btn:hover {
+            background: #153b75;
+        }
+
+        .operator-btn {
+            background: #e94560;
+            font-weight: 600;
+        }
+
+        .operator-btn:hover {
+            background: #ff5773;
+        }
+
+        .equals-btn {
+            background: #00b894;
+            font-weight: 600;
+        }
+
+        .equals-btn:hover {
+            background: #00d3a9;
+        }
+
+        .clear-btn {
+            background: #fd79a8;
+        }
+
+        .clear-btn:hover {
+            background: #ff94c2;
+        }
+
+        .function-btn {
+            background: #6c5ce7;
+        }
+
+        .function-btn:hover {
+            background: #7d6fff;
+        }
+
+        .span-two {
+            grid-column: span 2;
+        }
+
+        .history-panel {
+            background: #16213e;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 10px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .history-title {
+            color: white;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .history-list {
+            list-style: none;
+        }
+
+        .history-item {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+
+        .history-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .clear-history {
+            background: transparent;
+            border: none;
+            color: #e94560;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 450px) {
+            .calculator {
+                max-width: 100%;
+            }
+            
+            button {
+                padding: 20px 5px;
+                font-size: 1.2rem;
+            }
+            
+            .current-operand {
+                font-size: 2.5rem;
+            }
+        }

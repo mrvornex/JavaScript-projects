@@ -1,0 +1,121 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background: radial-gradient(circle, #000, #020024);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+.app {
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  text-shadow: 0 0 25px #0ff;
+}
+
+.input-box {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.input-box input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 20px;
+  border: none;
+}
+
+.input-box button {
+  padding: 10px 20px;
+  border-radius: 20px;
+  border: none;
+  background: #0ff;
+  cursor: pointer;
+}
+
+.wheel-wrapper {
+  position: relative;
+  margin: 20px auto;
+  width: 360px;
+  height: 360px;
+}
+
+.pointer {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 30px solid #ff0;
+  z-index: 10;
+}
+
+canvas {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  box-shadow: 0 0 40px #0ff, inset 0 0 20px #0ff;
+}
+
+#spinBtn {
+  margin-top: 10px;
+  padding: 12px 40px;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  background: linear-gradient(45deg, #0ff, #00f);
+  color: #000;
+  font-weight: bold;
+}
+
+#result {
+  margin-top: 15px;
+  font-size: 1.4rem;
+  text-shadow: 0 0 15px #0f0;
+}
+
+.history {
+  margin-top: 20px;
+  text-align: left;
+}
+
+.history h3 {
+  margin-bottom: 5px;
+}
+
+.history ul {
+  list-style: none;
+  max-height: 120px;
+  overflow-y: auto;
+}
+
+.history li {
+  font-size: 0.9rem;
+  padding: 3px 0;
+}
+
+@media (max-width: 480px) {
+  .wheel-wrapper {
+    width: 280px;
+    height: 280px;
+  }
+}

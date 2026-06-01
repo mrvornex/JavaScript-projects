@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Form Validation</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1><i class="fas fa-check-circle"></i> Form Validation</h1>
+        <form id="myForm">
+            <input type="text" id="name" placeholder="Full Name">
+            <div class="error" id="nameError"></div>
+
+            <input type="email" id="email" placeholder="Email Address">
+            <div class="error" id="emailError"></div>
+
+            <input type="password" id="password" placeholder="Password (min 6 chars)">
+            <div class="error" id="passwordError"></div>
+
+            <input type="password" id="confirmPassword" placeholder="Confirm Password">
+            <div class="error" id="confirmError"></div>
+
+            <button type="button" onclick="validateForm()">Submit Form</button>
+        </form>
+        <div id="message"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,88 @@
+body {
+    background: linear-gradient(135deg, #43CBFF, #9708CC);
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', sans-serif;
+    padding: 20px;
+}
+.game-container {
+    background: rgba(255,255,255,0.95);
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 800px;
+    width: 100%;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+}
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+.score, .time {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 10px;
+    display: inline-block;
+    background: #f8f9fa;
+    padding: 10px 20px;
+    border-radius: 10px;
+    color: #333;
+}
+button {
+    background: linear-gradient(to right, #FF416C, #FF4B2B);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 20px 0;
+    font-weight: bold;
+}
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(255, 75, 43, 0.3);
+}
+.game-area {
+    height: 400px;
+    background: rgba(248, 249, 250, 0.7);
+    border-radius: 15px;
+    margin-top: 20px;
+    position: relative;
+    overflow: hidden;
+    border: 3px dashed #ddd;
+}
+.balloon {
+    position: absolute;
+    width: 60px;
+    height: 80px;
+    background: linear-gradient(to bottom, #FF416C, #FF4B2B);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    cursor: pointer;
+    animation: float 4s ease-in-out infinite;
+    box-shadow: inset -10px -10px 10px rgba(0,0,0,0.1);
+}
+.balloon:before {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 20px;
+    background: #333;
+}
+@keyframes float {
+    0%, 100% { transform: translateY(0) rotate(-2deg); }
+    50% { transform: translateY(-20px) rotate(2deg); }
+}
+.balloon.popped {
+    animation: pop 0.3s forwards;
+}
+@keyframes pop {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(2); opacity: 0; }
+}

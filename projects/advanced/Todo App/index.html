@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NextLevel Todo - Ultimate Productivity App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-rocket"></i>Todo App</h1>
+            <p class="tagline">Ultimate productivity app with smart categorization, priority management, voice control,
+                and more</p>
+        </header>
+
+        <div class="app-container">
+            <!-- Left Panel: Add Task & Controls -->
+            <div class="panel">
+                <h2 class="panel-title"><i class="fas fa-plus-circle"></i> Add New Task</h2>
+                <form id="addTaskForm" class="add-task-form">
+                    <div class="form-group">
+                        <label for="taskTitle"><i class="fas fa-heading"></i> Task Title</label>
+                        <input type="text" id="taskTitle" placeholder="What needs to be done?" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="taskDescription"><i class="fas fa-align-left"></i> Description</label>
+                        <textarea id="taskDescription" placeholder="Add details about your task..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label><i class="fas fa-tags"></i> Category</label>
+                        <select id="taskCategory">
+                            <option value="personal">Personal</option>
+                            <option value="work">Work</option>
+                            <option value="shopping">Shopping</option>
+                            <option value="health">Health & Fitness</option>
+                            <option value="learning">Learning</option>
+                            <option value="finance">Finance</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label><i class="fas fa-exclamation-circle"></i> Priority</label>
+                        <div class="priority-options">
+                            <div class="priority-option priority-low" data-priority="low">Low</div>
+                            <div class="priority-option priority-medium selected" data-priority="medium">Medium</div>
+                            <div class="priority-option priority-high" data-priority="high">High</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="taskDueDate"><i class="fas fa-calendar-alt"></i> Due Date</label>
+                        <input type="date" id="taskDueDate">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Add Task
+                    </button>
+                </form>
+
+                <!-- Voice Control Section -->
+                <div class="voice-control">
+                    <button id="voiceBtn" class="voice-btn" title="Voice Command">
+                        <i class="fas fa-microphone"></i>
+                    </button>
+                    <div class="voice-status" id="voiceStatus">
+                        Click mic icon to add task by voice
+                    </div>
+                </div>
+
+                <!-- Stats Section -->
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="stat-value" id="totalTasks">0</div>
+                        <div class="stat-label">Total Tasks</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="completedTasks">0</div>
+                        <div class="stat-label">Completed</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="pendingTasks">0</div>
+                        <div class="stat-label">Pending</div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div style="margin-top: 25px;">
+                    <h3 class="panel-title"><i class="fas fa-bolt"></i> Quick Actions</h3>
+                    <div style="display: flex; gap: 10px; margin-top: 15px;">
+                        <button id="markAllComplete" class="btn btn-success" style="flex: 1;">
+                            <i class="fas fa-check-double"></i> Mark All Complete
+                        </button>
+                        <button id="clearCompleted" class="btn btn-light" style="flex: 1;">
+                            <i class="fas fa-trash"></i> Clear Completed
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Panel: Task List -->
+            <div class="panel">
+                <h2 class="panel-title"><i class="fas fa-tasks"></i> Your Tasks</h2>
+
+                <!-- Search -->
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchTask" placeholder="Search tasks...">
+                </div>
+
+                <!-- Filters -->
+                <div class="filters">
+                    <button class="filter-btn active" data-filter="all">All Tasks</button>
+                    <button class="filter-btn" data-filter="pending">Pending</button>
+                    <button class="filter-btn" data-filter="completed">Completed</button>
+                    <button class="filter-btn" data-filter="high">High Priority</button>
+                    <button class="filter-btn" data-filter="today">Due Today</button>
+                </div>
+
+                <!-- Task List -->
+                <div class="task-list" id="taskList">
+                    <!-- Tasks will be dynamically inserted here -->
+                    <div class="empty-state" id="emptyState">
+                        <i class="fas fa-clipboard-list"></i>
+                        <h3>No tasks yet</h3>
+                        <p>Add a task using the form or try voice command!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>NextLevel Todo App &copy; 2023 | Features: Smart Categorization • Priority Management • Voice Control •
+                Due Dates • Search & Filter • Statistics</p>
+        </footer>
+
+        <!-- Notification -->
+        <div class="notification" id="notification">
+            <i class="fas fa-check-circle"></i>
+            <div class="notification-content">Task added successfully!</div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

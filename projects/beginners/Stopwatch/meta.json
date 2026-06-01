@@ -1,0 +1,15 @@
+{
+  "title": "Stopwatch",
+"description": "A JavaScript stopwatch app to start, stop, and reset time with a simple, interactive interface.",
+  "image": "https://raw.githubusercontent.com/Bilal742/JavaScript-projects/main/Img/image33.png",
+  "techStack": [
+    "HTML",
+    "CSS",
+    "JavaScript"
+  ],
+  "features": [
+    "Basic Arithmetic",
+    "Dark Mode",
+    "Responsive Design"
+  ]
+}

@@ -1,0 +1,38 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg,#1e293b,#0f172a);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container {
+  text-align: center;
+}
+
+h1 {
+  margin-bottom: 30px;
+}
+
+.numbers {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.number {
+  font-size: 40px;
+  font-weight: bold;
+  background: #2563eb;
+  padding: 20px 30px;
+  border-radius: 12px;
+  transition: transform 0.3s;
+}
+
+.number:hover {
+  transform: scale(1.2);
+}

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gradient Floating Navbar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            min-height: 200vh;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding-top: 100px;
+        }
+
+        .floating-nav {
+            position: fixed;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 1200px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            padding: 0 2rem;
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            color: white;
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: #ffde59;
+            font-size: 2rem;
+        }
+
+        .nav-center {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-center a {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 15px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-center a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: left 0.3s;
+        }
+
+        .nav-center a:hover::before {
+            left: 0;
+        }
+
+        .nav-center a:hover {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-center a.active {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .notification {
+            position: relative;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        .notification-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #ff4757;
+            color: white;
+            font-size: 0.7rem;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .user-avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ffde59, #ff9f1a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            border: 3px solid white;
+        }
+
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 1024px) {
+            .hamburger {
+                display: block;
+            }
+            
+            .nav-center {
+                position: fixed;
+                top: 120px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 90%;
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem;
+                border-radius: 20px;
+                gap: 1.5rem;
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s;
+                box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
+            }
+            
+            .nav-center.active {
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            .nav-center a {
+                width: 100%;
+                text-align: center;
+                padding: 1rem;
+            }
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .content h1 {
+            color: #333;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .content p {
+            color: #666;
+            font-size: 1.2rem;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            margin-top: 4rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-label {
+            color: #666;
+            margin-top: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <nav class="floating-nav">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <i class="fas fa-cloud"></i>
+                FloatNav
+            </a>
+            
+            <ul class="nav-center" id="navCenter">
+                <li><a href="#" class="active">Dashboard</a></li>
+                <li><a href="#">Projects</a></li>
+                <li><a href="#">Analytics</a></li>
+                <li><a href="#">Team</a></li>
+                <li><a href="#">Settings</a></li>
+            </ul>
+            
+            <div class="nav-right">
+                <div class="notification">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-badge">3</span>
+                </div>
+                <div class="user-avatar">JD</div>
+                <button class="hamburger" id="hamburger">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="content">
+        <h1>Floating Gradient Navbar</h1>
+        <p>A floating navbar with beautiful gradient and modern UI</p>
+        
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-number">99%</div>
+                <div class="stat-label">Uptime</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">24/7</div>
+                <div class="stat-label">Support</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">10k+</div>
+                <div class="stat-label">Users</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navCenter = document.getElementById('navCenter');
+
+        hamburger.addEventListener('click', () => {
+            navCenter.classList.toggle('active');
+            hamburger.innerHTML = navCenter.classList.contains('active')
+                ? '<i class="fas fa-times"></i>'
+                : '<i class="fas fa-bars"></i>';
+        });
+
+        // Active link switching
+        document.querySelectorAll('.nav-center a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelectorAll('.nav-center a').forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+                
+                if(window.innerWidth <= 1024) {
+                    navCenter.classList.remove('active');
+                    hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+            });
+        });
+
+        // Notification click
+        document.querySelector('.notification').addEventListener('click', () => {
+            alert('You have 3 unread notifications');
+        });
+
+        // User avatar click
+        document.querySelector('.user-avatar').addEventListener('click', () => {
+            alert('User profile menu');
+        });
+    </script>
+</body>
+</html>

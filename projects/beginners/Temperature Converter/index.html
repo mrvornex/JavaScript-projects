@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Temp Converter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>🌡️ Temperature Converter</h1>
+        <input type="number" id="celsius" placeholder="Celsius" oninput="convert('C')">
+        <input type="number" id="fahrenheit" placeholder="Fahrenheit" oninput="convert('F')">
+        <input type="number" id="kelvin" placeholder="Kelvin" oninput="convert('K')">
+        <div class="buttons">
+            <button onclick="clearAll()">Clear All</button>
+        </div>
+        <p class="formula">Formula: F = (C × 9/5) + 32 | K = C + 273.15</p>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

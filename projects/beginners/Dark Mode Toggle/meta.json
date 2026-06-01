@@ -1,0 +1,15 @@
+{
+  "title": "Dark Mode Toggle",
+  "description": "A JavaScript dark mode toggle to switch between light and dark themes instantly.",
+  "image": "https://raw.githubusercontent.com/Bilal742/JavaScript-projects/main/Img/image50.png",
+  "techStack": [
+    "HTML",
+    "CSS",
+    "JavaScript"
+  ],
+  "features": [
+    "Basic Arithmetic",
+    "Dark Mode",
+    "Responsive Design"
+  ]
+}

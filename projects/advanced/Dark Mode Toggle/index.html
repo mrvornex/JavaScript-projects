@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="auto">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark Mode Toggle</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar">
+            <div class="logo">
+                <i class="fas fa-moon-stars"></i>
+                <span>NexusUI</span>
+            </div>
+            <div class="theme-controls">
+                <div class="theme-toggle" id="themeToggle">
+                    <div class="toggle-track">
+                        <div class="toggle-thumb">
+                            <i class="fas fa-sun"></i>
+                            <i class="fas fa-moon"></i>
+                            <i class="fas fa-desktop"></i>
+                            <i class="fas fa-adjust"></i>
+                        </div>
+                        <div class="toggle-modes">
+                            <span data-mode="light">Light</span>
+                            <span data-mode="dark">Dark</span>
+                            <span data-mode="auto">Auto</span>
+                            <span data-mode="contrast">High Contrast</span>
+                        </div>
+                    </div>
+                    <div class="toggle-label">
+                        <span id="currentMode">System Auto</span>
+                        <div class="battery-indicator" id="batteryIndicator">
+                            <div class="battery-level"></div>
+                            <i class="fas fa-battery-full"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <header class="hero">
+            <h1 class="hero-title">
+                <span class="gradient-text">Next-Level</span>
+                <span class="pulse">Dark Mode</span>
+                <span class="typing">Experience</span>
+            </h1>
+            <p class="hero-subtitle">Intelligent theme switching with 4 modes, system sync, and energy saving</p>
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-value" id="themeUsage">87%</div>
+                    <div class="stat-label">Dark Mode Usage</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value" id="energySaved">42%</div>
+                    <div class="stat-label">Energy Saved</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value" id="eyeComfort">94%</div>
+                    <div class="stat-label">Eye Comfort</div>
+                </div>
+            </div>
+        </header>
+
+        <main class="content">
+            <div class="demo-cards">
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>Smart Auto Mode</h3>
+                    <p>Automatically switches between light and dark based on system preferences, time of day, and ambient light detection.</p>
+                    <div class="card-badge auto">Active</div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3>High Contrast</h3>
+                    <p>Enhanced accessibility mode with maximum contrast ratio for better readability and reduced eye strain.</p>
+                    <div class="card-badge contrast">WCAG AAA</div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-battery-three-quarters"></i>
+                    </div>
+                    <h3>Battery Saver</h3>
+                    <p>Automatically activates dark mode when device battery is below 20% to extend battery life.</p>
+                    <div class="card-badge battery">Power Save</div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Schedule Mode</h3>
+                    <p>Set custom schedules for automatic theme switching based on your daily routine and preferences.</p>
+                    <div class="card-badge schedule">Smart</div>
+                </div>
+            </div>
+
+            <div class="preview-section">
+                <h2>Theme Preview</h2>
+                <div class="theme-previews">
+                    <div class="preview-card light-preview" data-theme="light">
+                        <div class="preview-header">
+                            <div class="preview-dots">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                            <span class="preview-label">Light Mode</span>
+                        </div>
+                        <div class="preview-content">
+                            <div class="preview-text">
+                                <div class="preview-line"></div>
+                                <div class="preview-line short"></div>
+                                <div class="preview-line"></div>
+                            </div>
+                            <button class="preview-btn">Button</button>
+                        </div>
+                        <div class="preview-footer">
+                            <i class="fas fa-sun"></i>
+                            <span>Recommended for daytime</span>
+                        </div>
+                    </div>
+                    
+                    <div class="preview-card dark-preview" data-theme="dark">
+                        <div class="preview-header">
+                            <div class="preview-dots">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                            <span class="preview-label">Dark Mode</span>
+                        </div>
+                        <div class="preview-content">
+                            <div class="preview-text">
+                                <div class="preview-line"></div>
+                                <div class="preview-line short"></div>
+                                <div class="preview-line"></div>
+                            </div>
+                            <button class="preview-btn">Button</button>
+                        </div>
+                        <div class="preview-footer">
+                            <i class="fas fa-moon"></i>
+                            <span>Easy on eyes at night</span>
+                        </div>
+                    </div>
+                    
+                    <div class="preview-card contrast-preview" data-theme="contrast">
+                        <div class="preview-header">
+                            <div class="preview-dots">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                            <span class="preview-label">High Contrast</span>
+                        </div>
+                        <div class="preview-content">
+                            <div class="preview-text">
+                                <div class="preview-line"></div>
+                                <div class="preview-line short"></div>
+                                <div class="preview-line"></div>
+                            </div>
+                            <button class="preview-btn">Button</button>
+                        </div>
+                        <div class="preview-footer">
+                            <i class="fas fa-universal-access"></i>
+                            <span>Maximum accessibility</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="settings-panel">
+                <h2>Advanced Settings</h2>
+                <div class="settings-grid">
+                    <div class="setting">
+                        <div class="setting-header">
+                            <i class="fas fa-clock"></i>
+                            <h4>Schedule Switching</h4>
+                        </div>
+                        <p>Automatically switch themes at specified times</p>
+                        <div class="time-inputs">
+                            <div class="time-input">
+                                <label>Light Mode</label>
+                                <input type="time" id="lightTime" value="07:00">
+                            </div>
+                            <div class="time-input">
+                                <label>Dark Mode</label>
+                                <input type="time" id="darkTime" value="19:00">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="setting">
+                        <div class="setting-header">
+                            <i class="fas fa-battery-low"></i>
+                            <h4>Battery Saver</h4>
+                        </div>
+                        <p>Enable dark mode when battery is low</p>
+                        <div class="slider-container">
+                            <input type="range" id="batteryThreshold" min="5" max="50" value="20" class="slider">
+                            <div class="slider-labels">
+                                <span>5%</span>
+                                <span id="thresholdValue">20%</span>
+                                <span>50%</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="setting">
+                        <div class="setting-header">
+                            <i class="fas fa-transition"></i>
+                            <h4>Transition Effects</h4>
+                        </div>
+                        <p>Customize how themes transition</p>
+                        <div class="transition-buttons">
+                            <button class="transition-btn active" data-transition="smooth">Smooth</button>
+                            <button class="transition-btn" data-transition="instant">Instant</button>
+                            <button class="transition-btn" data-transition="morph">Morph</button>
+                        </div>
+                    </div>
+                    
+                    <div class="setting">
+                        <div class="setting-header">
+                            <i class="fas fa-sync-alt"></i>
+                            <h4>System Sync</h4>
+                        </div>
+                        <p>Sync with operating system theme</p>
+                        <div class="sync-status" id="syncStatus">
+                            <div class="sync-indicator"></div>
+                            <span>Synced with system</span>
+                        </div>
+                        <button class="sync-btn" id="syncBtn">
+                            <i class="fas fa-sync"></i>
+                            Force Sync
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <div class="theme-history">
+                <h4>Theme History</h4>
+                <div class="history-timeline" id="historyTimeline">
+                    <!-- History items will be added here -->
+                </div>
+            </div>
+            <div class="footer-info">
+                <p>Current theme: <strong id="currentThemeInfo">System Auto (Dark)</strong></p>
+                <p>Last changed: <span id="lastChanged">Just now</span></p>
+                <div class="theme-actions">
+                    <button class="action-btn" id="resetTheme">
+                        <i class="fas fa-undo"></i>
+                        Reset to Default
+                    </button>
+                    <button class="action-btn" id="exportTheme">
+                        <i class="fas fa-download"></i>
+                        Export Settings
+                    </button>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <div class="theme-transition-overlay" id="themeTransition"></div>
+    
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joke Generator</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><i class="fas fa-laugh-squint"></i> Joke Generator</h1>
+            <p>Click the button for a dose of laughter!</p>
+        </div>
+        
+        <div class="joke-box">
+            <div class="joke-icon">
+                <i class="fas fa-comment-dots"></i>
+            </div>
+            
+            <div class="joke-content">
+                <p id="jokeText">Ready for a laugh? Click the button below!</p>
+            </div>
+            
+            <div class="joke-info">
+                <span id="jokeCategory">Category: General</span>
+                <span id="jokeType">Type: Single</span>
+            </div>
+        </div>
+        
+        <div class="controls">
+            <button id="newJokeBtn" class="btn joke-btn">
+                <i class="fas fa-redo"></i> New Joke
+            </button>
+            
+            <button id="copyBtn" class="btn copy-btn">
+                <i class="far fa-copy"></i> Copy Joke
+            </button>
+            
+            <button id="speakBtn" class="btn speak-btn">
+                <i class="fas fa-volume-up"></i> Speak Joke
+            </button>
+            
+            <button id="favoriteBtn" class="btn favorite-btn">
+                <i class="far fa-heart"></i> Favorite
+            </button>
+        </div>
+        
+        <div class="features">
+            <div class="feature">
+                <i class="fas fa-bolt"></i>
+                <h3>Instant Jokes</h3>
+                <p>Get funny jokes instantly</p>
+            </div>
+            
+            <div class="feature">
+                <i class="fas fa-category"></i>
+                <h3>Multiple Categories</h3>
+                <p>Various joke types</p>
+            </div>
+            
+            <div class="feature">
+                <i class="fas fa-robot"></i>
+                <h3>Voice Readout</h3>
+                <p>Hear the joke aloud</p>
+            </div>
+        </div>
+        
+        <div class="favorites-section">
+            <h3><i class="fas fa-star"></i> Favorite Jokes</h3>
+            <div id="favoritesList"></div>
+        </div>
+        
+        <div class="joke-count">
+            <p>Jokes Enjoyed: <span id="jokeCounter">0</span></p>
+        </div>
+    </div>
+    
+    <footer>
+        <p>Made with <i class="fas fa-heart"></i> by JokeMaster</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

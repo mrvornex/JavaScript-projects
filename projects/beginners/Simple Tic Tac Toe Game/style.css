@@ -1,0 +1,81 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #00c6ff, #0072ff);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #fff;
+}
+
+.container {
+    text-align: center;
+}
+
+h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 20px #fff;
+}
+
+.scoreboard {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+    gap: 10px;
+    margin: 0 auto 1rem auto;
+}
+
+.cell {
+    background: rgba(255,255,255,0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.cell:hover {
+    transform: scale(1.1);
+    background: rgba(255,255,255,0.2);
+}
+
+#resetBtn {
+    padding: 0.5rem 2rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background: #fff;
+    color: #0072ff;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+#resetBtn:hover {
+    background: #0072ff;
+    color: #fff;
+}
+
+#message {
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    text-shadow: 0 0 10px #fff;
+}

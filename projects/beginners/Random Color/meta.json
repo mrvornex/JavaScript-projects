@@ -1,0 +1,15 @@
+{
+  "title": "Random Color",
+  "description": "Random Color is a tool that generates a random color code with each click.",
+  "image": "https://raw.githubusercontent.com/Bilal742/JavaScript-projects/main/Img/image65.png",
+  "techStack": [
+    "HTML",
+    "CSS",
+    "JavaScript"
+  ],
+  "features": [
+    "Basic Arithmetic",
+    "Dark Mode",
+    "Responsive Design"
+  ]
+}

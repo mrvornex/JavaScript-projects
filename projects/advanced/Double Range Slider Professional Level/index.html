@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neo Range | Dual Control Slider</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="logo">Neo Range</h1>
+            <p class="subtitle">Advanced Dual Control Slider Interface</p>
+        </div>
+        
+        <div class="dashboard">
+            <div class="panel">
+                <h2 class="panel-title"><i class="fas fa-sliders-h"></i> Control Panel</h2>
+                <p>Adjust the dual-range slider to set your desired value range. Drag the thumb controls or use preset buttons.</p>
+                
+                <div class="stats">
+                    <div class="stat-item" style="border-left-color: #ff00cc;">
+                        <div class="stat-value" id="range-difference">30</div>
+                        <div class="stat-label">Range Difference</div>
+                    </div>
+                    <div class="stat-item" style="border-left-color: #3333ff;">
+                        <div class="stat-value" id="mid-value">65</div>
+                        <div class="stat-label">Mid Value</div>
+                    </div>
+                    <div class="stat-item" style="border-left-color: #00ffcc;">
+                        <div class="stat-value" id="percent-coverage">60%</div>
+                        <div class="stat-label">Coverage</div>
+                    </div>
+                    <div class="stat-item" style="border-left-color: #ffcc00;">
+                        <div class="stat-value">2X</div>
+                        <div class="stat-label">Precision Mode</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="panel">
+                <h2 class="panel-title"><i class="fas fa-chart-line"></i> Visual Analytics</h2>
+                <p>Real-time visualization of the selected range. The bar height represents the current range coverage.</p>
+                
+                <div class="visualizer">
+                    <div class="visualizer-bar" id="visualizer-bar"></div>
+                </div>
+                
+                <div class="value-display">
+                    <div>Min: <span id="min-display">0</span></div>
+                    <div>Max: <span id="max-display">100</span></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slider-container">
+            <div class="range-display">
+                <div>Selected Range: <span class="range-value" id="selected-range">50 - 80</span></div>
+                <div>Step: <span class="range-value">1</span></div>
+            </div>
+            
+            <div class="current-value">
+                <span id="current-min">50</span> - <span id="current-max">80</span>
+            </div>
+            
+            <div class="range-slider" id="range-slider">
+                <div class="slider-track">
+                    <div class="slider-fill" id="slider-fill"></div>
+                </div>
+                <div class="slider-thumb" id="thumb-min" style="left: 50%;">MIN</div>
+                <div class="slider-thumb" id="thumb-max" style="left: 80%;">MAX</div>
+            </div>
+            
+            <div class="value-display">
+                <div>0</div>
+                <div>25</div>
+                <div>50</div>
+                <div>75</div>
+                <div>100</div>
+            </div>
+            
+            <div class="controls">
+                <button class="control-btn preset" id="preset-low">
+                    <i class="fas fa-arrow-down"></i> Low Range (0-30)
+                </button>
+                <button class="control-btn reset" id="reset-btn">
+                    <i class="fas fa-redo"></i> Reset to Default
+                </button>
+                <button class="control-btn random" id="random-btn">
+                    <i class="fas fa-random"></i> Random Range
+                </button>
+                <button class="control-btn preset" id="preset-high">
+                    <i class="fas fa-arrow-up"></i> High Range (70-100)
+                </button>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>© 2023 Neo Range | Futuristic UI Component | Made with <i class="fas fa-heart" style="color: #ff00cc;"></i></p>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

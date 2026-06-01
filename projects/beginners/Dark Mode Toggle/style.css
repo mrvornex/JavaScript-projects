@@ -1,0 +1,69 @@
+:root {
+    --bg-color: #f8f9fa;
+    --text-color: #333;
+    --card-bg: white;
+    --primary-color: #6c5ce7;
+}
+
+.dark-mode {
+    --bg-color: #1a1a2e;
+    --text-color: #f8f9fa;
+    --card-bg: #16213e;
+    --primary-color: #00b894;
+}
+
+body {
+    background: var(--bg-color);
+    color: var(--text-color);
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', sans-serif;
+    padding: 20px;
+    transition: all 0.3s ease;
+}
+
+.container {
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+}
+
+h1 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+p {
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+button {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-bottom: 30px;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.card {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 15px;
+    margin-top: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    border-left: 5px solid var(--primary-color);
+}

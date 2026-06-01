@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mega Menu Navbar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            padding-top: 80px;
+            background: #f8fafc;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: white;
+            padding: 0 2rem;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: #1e293b;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .logo i {
+            color: #3b82f6;
+            font-size: 1.8rem;
+        }
+
+        .main-nav {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            color: #475569;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.8rem 0;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: #3b82f6;
+        }
+
+        .nav-link i {
+            font-size: 0.8rem;
+            transition: transform 0.3s;
+        }
+
+        .mega-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 800px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 1001;
+        }
+
+        .nav-item:hover .mega-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .nav-item:hover .nav-link i {
+            transform: rotate(180deg);
+        }
+
+        .mega-column h4 {
+            color: #1e293b;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .mega-links {
+            list-style: none;
+        }
+
+        .mega-links a {
+            display: block;
+            padding: 0.5rem 0;
+            color: #64748b;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .mega-links a:hover {
+            color: #3b82f6;
+        }
+
+        .mega-links a i {
+            margin-right: 10px;
+            color: #94a3b8;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .btn-login {
+            color: #475569;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.6rem 1.2rem;
+            border-radius: 6px;
+            transition: all 0.3s;
+        }
+
+        .btn-login:hover {
+            background: #f1f5f9;
+        }
+
+        .btn-signup {
+            background: #3b82f6;
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.6rem 1.5rem;
+            border-radius: 6px;
+            transition: all 0.3s;
+        }
+
+        .btn-signup:hover {
+            background: #2563eb;
+            transform: translateY(-1px);
+        }
+
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #475569;
+            cursor: pointer;
+        }
+
+        @media (max-width: 1024px) {
+            .hamburger {
+                display: block;
+            }
+            
+            .main-nav {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 2rem;
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            }
+            
+            .main-nav.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            .mega-menu {
+                position: static;
+                width: 100%;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                display: none;
+                margin-top: 1rem;
+            }
+            
+            .nav-item.active .mega-menu {
+                display: block;
+            }
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .content h1 {
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <i class="fas fa-rocket"></i>
+                MegaNav
+            </a>
+            
+            <ul class="main-nav" id="mainNav">
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        Products
+                        <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <div class="mega-menu">
+                        <div class="mega-column">
+                            <h4>Web Development</h4>
+                            <ul class="mega-links">
+                                <li><a href="#"><i class="fas fa-code"></i> Frontend Tools</a></li>
+                                <li><a href="#"><i class="fas fa-server"></i> Backend Systems</a></li>
+                                <li><a href="#"><i class="fas fa-database"></i> Databases</a></li>
+                            </ul>
+                        </div>
+                        <div class="mega-column">
+                            <h4>Design</h4>
+                            <ul class="mega-links">
+                                <li><a href="#"><i class="fas fa-palette"></i> UI Kits</a></li>
+                                <li><a href="#"><i class="fas fa-icons"></i> Icons Pack</a></li>
+                                <li><a href="#"><i class="fas fa-photo-video"></i> Templates</a></li>
+                            </ul>
+                        </div>
+                        <div class="mega-column">
+                            <h4>Resources</h4>
+                            <ul class="mega-links">
+                                <li><a href="#"><i class="fas fa-book"></i> Documentation</a></li>
+                                <li><a href="#"><i class="fas fa-video"></i> Tutorials</a></li>
+                                <li><a href="#"><i class="fas fa-comments"></i> Community</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        Solutions
+                        <i class="fas fa-chevron-down"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        Resources
+                        <i class="fas fa-chevron-down"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Pricing</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Company</a>
+                </li>
+            </ul>
+            
+            <div class="nav-buttons">
+                <a href="#" class="btn-login">Log in</a>
+                <a href="#" class="btn-signup">Sign up free</a>
+                <button class="hamburger" id="hamburger">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="content">
+        <h1>Mega Menu Navbar</h1>
+        <p>Advanced navbar with mega dropdown menus</p>
+    </div>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const mainNav = document.getElementById('mainNav');
+        
+        hamburger.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            hamburger.innerHTML = mainNav.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Mobile mega menu toggle
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                if(window.innerWidth <= 1024) {
+                    e.preventDefault();
+                    const parent = this.parentElement;
+                    
+                    // Close other open mega menus
+                    document.querySelectorAll('.nav-item').forEach(item => {
+                        if(item !== parent) {
+                            item.classList.remove('active');
+                        }
+                    });
+                    
+                    // Toggle current mega menu
+                    parent.classList.toggle('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UltraCalc | Perfect Calculator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="calculator">
+        <div class="display">
+            <div class="previous-operand" id="previous-operand"></div>
+            <div class="current-operand" id="current-operand">0</div>
+        </div>
+        
+        <div class="buttons-grid">
+            <!-- Row 1 -->
+            <button class="clear-btn span-two" data-action="clear">AC</button>
+            <button class="clear-btn" data-action="delete">DEL</button>
+            <button class="operator-btn" data-action="divide">÷</button>
+            
+            <!-- Row 2 -->
+            <button class="number-btn" data-number="7">7</button>
+            <button class="number-btn" data-number="8">8</button>
+            <button class="number-btn" data-number="9">9</button>
+            <button class="operator-btn" data-action="multiply">×</button>
+            
+            <!-- Row 3 -->
+            <button class="number-btn" data-number="4">4</button>
+            <button class="number-btn" data-number="5">5</button>
+            <button class="number-btn" data-number="6">6</button>
+            <button class="operator-btn" data-action="subtract">−</button>
+            
+            <!-- Row 4 -->
+            <button class="number-btn" data-number="1">1</button>
+            <button class="number-btn" data-number="2">2</button>
+            <button class="number-btn" data-number="3">3</button>
+            <button class="operator-btn" data-action="add">+</button>
+            
+            <!-- Row 5 -->
+            <button class="function-btn" data-action="plus-minus">±</button>
+            <button class="number-btn" data-number="0">0</button>
+            <button class="number-btn" data-action="decimal">.</button>
+            <button class="equals-btn" data-action="equals">=</button>
+        </div>
+        
+        <div class="history-panel">
+            <div class="history-title">
+                <span>Calculation History</span>
+                <button class="clear-history" id="clear-history">Clear</button>
+            </div>
+            <ul class="history-list" id="history-list"></ul>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

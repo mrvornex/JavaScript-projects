@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CypherLock Pro | Next-Level Password Generator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-lock logo-icon"></i>
+                <h1>CypherLock Pro</h1>
+            </div>
+            <p class="tagline">Next-level password generator with advanced security features, strength analysis, and
+                pattern customization</p>
+        </header>
+
+        <div class="app-container">
+            <!-- Left Panel: Generator Controls -->
+            <div class="panel">
+                <h2 class="panel-title"><i class="fas fa-cogs"></i> Password Generator</h2>
+
+                <!-- Password Display -->
+                <div class="password-display-container">
+                    <div class="password-display">
+                        <div class="password-text" id="passwordDisplay">Click Generate to create a password</div>
+                        <button class="copy-btn" id="copyBtn" title="Copy to clipboard">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+
+                    <div class="password-strength">
+                        <div class="strength-meter">
+                            <div class="strength-fill" id="strengthFill"></div>
+                        </div>
+                        <div class="strength-text" id="strengthText">Very Weak</div>
+                    </div>
+                </div>
+
+                <!-- Length Control -->
+                <div class="control-group">
+                    <div class="control-header">
+                        <div class="control-label">
+                            <i class="fas fa-ruler-horizontal"></i>
+                            Password Length
+                        </div>
+                        <div class="control-value" id="lengthValue">16</div>
+                    </div>
+                    <div class="slider-container">
+                        <input type="range" min="4" max="64" value="16" class="slider" id="lengthSlider">
+                    </div>
+                </div>
+
+                <!-- Character Type Options -->
+                <div class="control-group">
+                    <div class="control-header">
+                        <div class="control-label">
+                            <i class="fas fa-keyboard"></i>
+                            Character Types
+                        </div>
+                    </div>
+                    <div class="char-type-options">
+                        <div class="char-type-option uppercase active" data-type="uppercase">
+                            <div class="char-type-icon">
+                                <i class="fas fa-text-height"></i>
+                            </div>
+                            <div class="char-type-info">
+                                <h4>Uppercase (A-Z)</h4>
+                                <p>Include capital letters</p>
+                            </div>
+                        </div>
+                        <div class="char-type-option lowercase active" data-type="lowercase">
+                            <div class="char-type-icon">
+                                <i class="fas fa-font"></i>
+                            </div>
+                            <div class="char-type-info">
+                                <h4>Lowercase (a-z)</h4>
+                                <p>Include small letters</p>
+                            </div>
+                        </div>
+                        <div class="char-type-option numbers active" data-type="numbers">
+                            <div class="char-type-icon">
+                                <i class="fas fa-hashtag"></i>
+                            </div>
+                            <div class="char-type-info">
+                                <h4>Numbers (0-9)</h4>
+                                <p>Include digits</p>
+                            </div>
+                        </div>
+                        <div class="char-type-option symbols active" data-type="symbols">
+                            <div class="char-type-icon">
+                                <i class="fas fa-asterisk"></i>
+                            </div>
+                            <div class="char-type-info">
+                                <h4>Symbols (!@#$%...)</h4>
+                                <p>Include special characters</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Advanced Options -->
+                <div class="advanced-options">
+                    <h3 class="panel-title"><i class="fas fa-sliders-h"></i> Advanced Options</h3>
+
+                    <div class="option-row">
+                        <div>
+                            <div class="control-label">
+                                <i class="fas fa-ban"></i>
+                                Avoid Ambiguous Characters
+                            </div>
+                            <p style="color: var(--gray); font-size: 0.9rem; margin-top: 5px;">Exclude similar
+                                characters like I, l, 1, O, 0</p>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="avoidAmbiguous">
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+
+                    <div class="option-row">
+                        <div>
+                            <div class="control-label">
+                                <i class="fas fa-retweet"></i>
+                                Auto-Refresh Every 30s
+                            </div>
+                            <p style="color: var(--gray); font-size: 0.9rem; margin-top: 5px;">Automatically generate
+                                new passwords</p>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="autoRefresh">
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+
+                    <div class="option-row">
+                        <div>
+                            <div class="control-label">
+                                <i class="fas fa-magic"></i>
+                                Pronounceable Passwords
+                            </div>
+                            <p style="color: var(--gray); font-size: 0.9rem; margin-top: 5px;">Generate easier to
+                                remember passwords</p>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="pronounceable">
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Pattern Options -->
+                <div class="control-group">
+                    <div class="control-header">
+                        <div class="control-label">
+                            <i class="fas fa-project-diagram"></i>
+                            Password Pattern
+                        </div>
+                    </div>
+                    <div class="pattern-options">
+                        <button class="pattern-btn active" data-pattern="random">Random</button>
+                        <button class="pattern-btn" data-pattern="memorable">Memorable</button>
+                        <button class="pattern-btn" data-pattern="pin">PIN Code</button>
+                        <button class="pattern-btn" data-pattern="passphrase">Passphrase</button>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="action-buttons">
+                    <button class="btn btn-generate" id="generateBtn">
+                        <i class="fas fa-bolt"></i> Generate Password
+                    </button>
+                    <button class="btn btn-reset" id="resetBtn">
+                        <i class="fas fa-redo"></i> Reset Settings
+                    </button>
+                </div>
+            </div>
+
+            <!-- Right Panel: Security Analysis & History -->
+            <div class="panel">
+                <h2 class="panel-title"><i class="fas fa-shield-alt"></i> Security Analysis</h2>
+
+                <!-- Security Score -->
+                <div class="security-score">
+                    <div class="score-circle">
+                        <svg>
+                            <circle class="circle-bg" cx="60" cy="60" r="50"></circle>
+                            <circle class="circle-progress" id="scoreCircle" cx="60" cy="60" r="50"></circle>
+                        </svg>
+                        <div class="score-value" id="scoreValue">0</div>
+                    </div>
+                    <div class="score-text">
+                        <h3>Security Score</h3>
+                        <p>This score evaluates your password strength based on length, character variety, and
+                            randomness. Aim for a score above 80 for maximum security.</p>
+                    </div>
+                </div>
+
+                <!-- Security Analysis Details -->
+                <div class="control-group">
+                    <div class="control-header">
+                        <div class="control-label">
+                            <i class="fas fa-chart-bar"></i>
+                            Security Analysis
+                        </div>
+                    </div>
+
+                    <div class="analysis-details">
+                        <div class="option-row">
+                            <div class="control-label">Length Strength</div>
+                            <div class="strength-badge strength-weak" id="lengthBadge">Weak</div>
+                        </div>
+                        <div class="option-row">
+                            <div class="control-label">Character Variety</div>
+                            <div class="strength-badge strength-weak" id="varietyBadge">Weak</div>
+                        </div>
+                        <div class="option-row">
+                            <div class="control-label">Entropy (Bits)</div>
+                            <div class="control-value" id="entropyValue">0</div>
+                        </div>
+                        <div class="option-row">
+                            <div class="control-label">Crack Time</div>
+                            <div class="control-value" id="crackTime">Instant</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Password History -->
+                <div class="control-group">
+                    <div class="control-header">
+                        <div class="control-label">
+                            <i class="fas fa-history"></i>
+                            Password History
+                        </div>
+                        <button class="history-btn" id="clearHistory" title="Clear History">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                    <div class="history-container" id="historyContainer">
+                        <!-- History items will be inserted here -->
+                        <div class="empty-history" style="text-align: center; color: var(--gray); padding: 40px 20px;">
+                            <i class="fas fa-history" style="font-size: 3rem; margin-bottom: 15px; opacity: 0.5;"></i>
+                            <p>No passwords generated yet. Generate your first password to see it here.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Features Section -->
+        <div class="panel" style="margin-top: 30px;">
+            <h2 class="panel-title"><i class="fas fa-star"></i> Advanced Features</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <i class="fas fa-brain"></i>
+                    <h3>Smart Algorithms</h3>
+                    <p>Uses cryptographically secure random generation</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-bolt"></i>
+                    <h3>Instant Generation</h3>
+                    <p>Generate multiple passwords in milliseconds</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Strength Analysis</h3>
+                    <p>Real-time password strength evaluation</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-clipboard"></i>
+                    <h3>Clipboard Management</h3>
+                    <p>Auto-clear clipboard after 60 seconds</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-user-secret"></i>
+                    <h3>No Data Storage</h3>
+                    <p>All processing happens locally in your browser</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Responsive Design</h3>
+                    <p>Works perfectly on all devices</p>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>
+                CypherLock Pro &copy; <span id="year"></span> |
+                Next-Level Password Generator |
+                All passwords are generated locally and never sent over the network
+            </p>
+
+            <p style="margin-top: 10px; font-size: 0.8rem; color: var(--gray);">
+                For maximum security, use passwords with 16+ characters containing uppercase,
+                lowercase, numbers, and symbols.
+            </p>
+        </footer>
+
+        <script>
+            document.getElementById("year").textContent = new Date().getFullYear();
+        </script>
+
+    </div>
+
+    <!-- Notification -->
+    <div class="notification" id="notification">
+        <i class="fas fa-check-circle"></i>
+        <div class="notification-content">Password copied to clipboard!</div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

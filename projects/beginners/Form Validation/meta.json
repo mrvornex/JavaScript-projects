@@ -1,0 +1,15 @@
+{
+  "title": "Form Validation",
+  "description": "A JavaScript form validation app that checks user input in real time for accuracy and completeness.",
+  "image": "https://raw.githubusercontent.com/Bilal742/JavaScript-projects/main/Img/image36.png",
+  "techStack": [
+    "HTML",
+    "CSS",
+    "JavaScript"
+  ],
+  "features": [
+    "Basic Arithmetic",
+    "Dark Mode",
+    "Responsive Design"
+  ]
+}

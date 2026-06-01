@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Rich Text Editor</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="editor-header">
+            <h1><i class="fas fa-edit"></i> Simple Rich Text Editor</h1>
+            <p>Write, format, and style your text easily!</p>
+        </div>
+
+        <div class="toolbar">
+            <div class="toolbar-group">
+                <button class="tool-btn" data-command="bold" title="Bold">
+                    <i class="fas fa-bold"></i>
+                </button>
+                <button class="tool-btn" data-command="italic" title="Italic">
+                    <i class="fas fa-italic"></i>
+                </button>
+                <button class="tool-btn" data-command="underline" title="Underline">
+                    <i class="fas fa-underline"></i>
+                </button>
+            </div>
+
+            <div class="toolbar-group">
+                <button class="tool-btn" data-command="justifyLeft" title="Align Left">
+                    <i class="fas fa-align-left"></i>
+                </button>
+                <button class="tool-btn" data-command="justifyCenter" title="Align Center">
+                    <i class="fas fa-align-center"></i>
+                </button>
+                <button class="tool-btn" data-command="justifyRight" title="Align Right">
+                    <i class="fas fa-align-right"></i>
+                </button>
+                <button class="tool-btn" data-command="justifyFull" title="Justify">
+                    <i class="fas fa-align-justify"></i>
+                </button>
+            </div>
+
+            <div class="toolbar-group">
+                <button class="tool-btn" data-command="insertUnorderedList" title="Bullet List">
+                    <i class="fas fa-list-ul"></i>
+                </button>
+                <button class="tool-btn" data-command="insertOrderedList" title="Numbered List">
+                    <i class="fas fa-list-ol"></i>
+                </button>
+            </div>
+
+            <div class="toolbar-group">
+                <select id="fontSize" class="font-select" title="Font Size">
+                    <option value="3">Small</option>
+                    <option value="4" selected>Normal</option>
+                    <option value="5">Large</option>
+                    <option value="6">X-Large</option>
+                </select>
+                
+                <select id="fontFamily" class="font-select" title="Font Family">
+                    <option value="Arial">Arial</option>
+                    <option value="Georgia" selected>Georgia</option>
+                    <option value="Courier New">Courier New</option>
+                    <option value="Times New Roman">Times New Roman</option>
+                    <option value="Verdana">Verdana</option>
+                </select>
+            </div>
+
+            <div class="toolbar-group">
+                <input type="color" id="textColor" class="color-picker" title="Text Color" value="#000000">
+                <input type="color" id="bgColor" class="color-picker" title="Background Color" value="#ffffff">
+            </div>
+        </div>
+
+        <div class="editor-container">
+            <div id="editor" contenteditable="true" class="editor-area">
+                <p>Start typing here... You can format text using toolbar buttons!</p>
+                <p>Try <b>bold</b>, <i>italic</i>, change colors, and more!</p>
+                <ul>
+                    <li>Create lists</li>
+                    <li>Change alignment</li>
+                    <li>Use different fonts</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="action-buttons">
+            <button id="clearBtn" class="action-btn clear-btn">
+                <i class="fas fa-eraser"></i> Clear All
+            </button>
+            <button id="copyBtn" class="action-btn copy-btn">
+                <i class="far fa-copy"></i> Copy Text
+            </button>
+            <button id="saveBtn" class="action-btn save-btn">
+                <i class="fas fa-save"></i> Save Text
+            </button>
+            <button id="printBtn" class="action-btn print-btn">
+                <i class="fas fa-print"></i> Print
+            </button>
+        </div>
+
+        <div class="word-counter">
+            <p>Words: <span id="wordCount">0</span> | Characters: <span id="charCount">0</span></p>
+        </div>
+
+        <div class="preview">
+            <h3><i class="fas fa-eye"></i> Preview</h3>
+            <div id="previewContent" class="preview-content"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

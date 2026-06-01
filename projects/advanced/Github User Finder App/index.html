@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub User Finder</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fab fa-github"></i> GitHub User Finder
+            </div>
+            <h1>Find GitHub Users Instantly</h1>
+            <p class="subtitle">Search for any GitHub user to view their profile, repositories, and activity</p>
+        </header>
+        
+        <section class="search-section">
+            <div class="search-box">
+                <input 
+                    type="text" 
+                    id="usernameInput" 
+                    placeholder="Enter GitHub username (e.g., octocat, torvalds)" 
+                    autocomplete="off"
+                >
+                <button id="searchBtn">
+                    <i class="fas fa-search"></i> Search User
+                </button>
+            </div>
+        </section>
+        
+        <div class="loading" id="loadingIndicator">
+            <i class="fas fa-spinner"></i>
+            <h2>Searching GitHub...</h2>
+            <p>Fetching user data and repositories</p>
+        </div>
+        
+        <div class="error" id="errorMessage">
+            <i class="fas fa-exclamation-triangle"></i>
+            <h2>Error Loading User</h2>
+            <p id="errorText">User not found or API rate limit exceeded</p>
+            <button id="tryAgainBtn" style="margin-top: 20px; padding: 10px 20px; background-color: #58a6ff; color: white; border: none; border-radius: 5px; cursor: pointer;">
+                Try Again
+            </button>
+        </div>
+        
+        <div class="no-user" id="noUserMessage">
+            <i class="fas fa-user-slash"></i>
+            <h2>No User Found</h2>
+            <p>Try searching for a valid GitHub username</p>
+        </div>
+        
+        <section class="user-section" id="userSection">
+            <div class="user-header">
+                <div class="avatar">
+                    <img id="userAvatar" src="" alt="User Avatar">
+                </div>
+                <div class="user-info">
+                    <h2 id="userName"></h2>
+                    <div class="username" id="userLogin"></div>
+                    <p class="user-bio" id="userBio"></p>
+                    <div class="user-stats">
+                        <div class="stat">
+                            <span class="stat-value" id="followersCount">0</span>
+                            <span class="stat-label">Followers</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value" id="followingCount">0</span>
+                            <span class="stat-label">Following</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value" id="publicReposCount">0</span>
+                            <span class="stat-label">Public Repos</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value" id="publicGistsCount">0</span>
+                            <span class="stat-label">Public Gists</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="user-details">
+                <div class="detail-card">
+                    <h3><i class="fas fa-info-circle"></i> User Information</h3>
+                    <div class="detail-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span id="userLocation">Not specified</span>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-link"></i>
+                        <span id="userBlog">Not specified</span>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fab fa-twitter"></i>
+                        <span id="userTwitter">Not specified</span>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-building"></i>
+                        <span id="userCompany">Not specified</span>
+                    </div>
+                </div>
+                
+                <div class="detail-card">
+                    <h3><i class="fas fa-calendar-alt"></i> Account Details</h3>
+                    <div class="detail-item">
+                        <i class="fas fa-user-plus"></i>
+                        <span>Joined: <span id="userCreatedAt"></span></span>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-clock"></i>
+                        <span>Last updated: <span id="userUpdatedAt"></span></span>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-external-link-alt"></i>
+                        <span>GitHub Profile: <a id="userProfileLink" href="#" target="_blank">View on GitHub</a></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="repos-section" id="reposSection">
+            <div class="section-header">
+                <h2>Latest Repositories</h2>
+                <div id="reposCount">0 repos</div>
+            </div>
+            
+            <div class="repos-grid" id="reposGrid">
+                <!-- Repositories will be dynamically added here -->
+            </div>
+        </section>
+        
+        <footer>
+            <p>GitHub User Finder &copy; 2023 | Made with <i class="fas fa-heart" style="color: #f85149;"></i> using GitHub API</p>
+            <p>Search for any GitHub username to get detailed profile information</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

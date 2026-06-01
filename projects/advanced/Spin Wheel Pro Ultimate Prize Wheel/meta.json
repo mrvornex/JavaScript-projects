@@ -1,0 +1,15 @@
+{
+  "title": "Spin Wheel",
+  "description": "Interactive JavaScript spin wheel with smooth animations and random prize selection.",
+  "image": "https://raw.githubusercontent.com/Bilal742/JavaScript-projects/main/Img/image29.png",
+  "techStack": [
+    "HTML",
+    "CSS",
+    "JavaScript"
+  ],
+  "features": [
+    "Basic Arithmetic",
+    "Dark Mode",
+    "Responsive Design"
+  ]
+} 

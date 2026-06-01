@@ -1,0 +1,15 @@
+{
+  "title": "Password Generator",
+"description": "A JavaScript password generator app that creates strong, random passwords with customizable length and character types.",
+  "image": "https://raw.githubusercontent.com/Bilal742/JavaScript-projects/main/Img/image32.png",
+  "techStack": [
+    "HTML",
+    "CSS",
+    "JavaScript"
+  ],
+  "features": [
+    "Basic Arithmetic",
+    "Dark Mode",
+    "Responsive Design"
+  ]
+}

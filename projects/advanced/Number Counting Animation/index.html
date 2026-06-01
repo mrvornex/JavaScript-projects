@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counting Animation</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1><i class="fas fa-chart-line"></i> Number Counting Animation</h1>
+        <p class="subtitle">See numbers grow from 0 to their target value!</p>
+        
+        <div class="counter-container">
+            <!-- Counter 1 -->
+            <div class="counter-box">
+                <div class="icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="number" data-target="1500">0</div>
+                <h3>Happy Customers</h3>
+            </div>
+            
+            <!-- Counter 2 -->
+            <div class="counter-box">
+                <div class="icon">
+                    <i class="fas fa-project-diagram"></i>
+                </div>
+                <div class="number" data-target="250">0</div>
+                <h3>Projects Done</h3>
+            </div>
+            
+            <!-- Counter 3 -->
+            <div class="counter-box">
+                <div class="icon">
+                    <i class="fas fa-star"></i>
+                </div>
+                <div class="number" data-target="4.8">0</div>
+                <h3>Star Rating</h3>
+            </div>
+            
+            <!-- Counter 4 -->
+            <div class="counter-box">
+                <div class="icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <div class="number" data-target="5000">0</div>
+                <h3>Hours Worked</h3>
+            </div>
+        </div>
+        
+        <div class="controls">
+            <button id="startBtn" class="btn start-btn">
+                <i class="fas fa-play"></i> Start Animation
+            </button>
+            <button id="resetBtn" class="btn reset-btn">
+                <i class="fas fa-redo"></i> Reset
+            </button>
+        </div>
+        
+        <div class="instructions">
+            <h3><i class="fas fa-info-circle"></i> How it Works:</h3>
+            <ol>
+                <li>Click "Start Animation" button</li>
+                <li>Numbers will count up from 0 to target value</li>
+                <li>Click "Reset" to start again</li>
+                <li>Scroll down to see auto-start effect</li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- Scroll down indicator -->
+    <div class="scroll-indicator">
+        <p>Scroll down to see auto counting</p>
+        <i class="fas fa-chevron-down"></i>
+    </div>
+
+    <!-- Auto counting section -->
+    <div class="auto-section">
+        <h2><i class="fas fa-magic"></i> Auto Counting on Scroll</h2>
+        <p class="subtitle">These numbers start counting when you scroll to this section</p>
+        
+        <div class="counter-container">
+            <div class="counter-box auto-box">
+                <div class="icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <div class="number" data-target="10000" data-suffix="+">0</div>
+                <h3>Lines of Code</h3>
+            </div>
+            
+            <div class="counter-box auto-box">
+                <div class="icon">
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <div class="number" data-target="50" data-suffix="+">0</div>
+                <h3>Awards Won</h3>
+            </div>
+            
+            <div class="counter-box auto-box">
+                <div class="icon">
+                    <i class="fas fa-coffee"></i>
+                </div>
+                <div class="number" data-target="1000" data-suffix="+">0</div>
+                <h3>Cups of Coffee</h3>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Made with <i class="fas fa-heart"></i> for Beginners | HTML, CSS & JavaScript</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

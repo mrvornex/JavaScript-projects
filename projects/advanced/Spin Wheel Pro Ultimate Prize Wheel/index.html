@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spin Wheel Pro | Ultimate Prize Wheel</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Orbitron:wght@400;500;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎡</text></svg>">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-sync-alt"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>SPIN WHEEL <span class="pro-text">PRO</span></h1>
+                    <p class="tagline">The Ultimate Prize Wheel Experience</p>
+                </div>
+            </div>
+            <div class="user-stats">
+                <div class="stat-item">
+                    <i class="fas fa-coins"></i>
+                    <div class="stat-info">
+                        <span class="stat-value" id="totalCoins">10,000</span>
+                        <span class="stat-label">Coins</span>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-trophy"></i>
+                    <div class="stat-info">
+                        <span class="stat-value" id="totalSpins">248</span>
+                        <span class="stat-label">Total Spins</span>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-crown"></i>
+                    <div class="stat-info">
+                        <span class="stat-value" id="jackpots">12</span>
+                        <span class="stat-label">Jackpots</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="game-area">
+                <div class="wheel-container">
+                    <div class="wheel-background"></div>
+                    <div class="wheel-wrapper">
+                        <canvas id="wheelCanvas" width="800" height="800"></canvas>
+                        <div class="wheel-center">
+                            <div class="center-logo">
+                                <i class="fas fa-gem"></i>
+                            </div>
+                        </div>
+                        <div class="wheel-pointer">
+                            <div class="pointer-arrow">
+                                <i class="fas fa-caret-down"></i>
+                            </div>
+                            <div class="pointer-base"></div>
+                        </div>
+                    </div>
+                    <div class="spin-button-container">
+                        <button id="spinButton" class="spin-button">
+                            <span class="spin-icon">
+                                <i class="fas fa-play"></i>
+                            </span>
+                            <span class="spin-text">SPIN WHEEL</span>
+                            <span class="spin-cost">Cost: <span id="spinCost">100</span> coins</span>
+                        </button>
+                        <div class="spin-info">
+                            <div class="info-item">
+                                <i class="fas fa-bolt"></i>
+                                <span>Free spin in: <span id="freeSpinTimer">03:45</span></span>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-fire"></i>
+                                <span>Streak: <span id="spinStreak">5</span> spins</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="results-panel">
+                    <div class="results-header">
+                        <h3><i class="fas fa-gift"></i> Latest Wins</h3>
+                        <div class="results-controls">
+                            <button id="clearResults" class="control-btn">
+                                <i class="fas fa-trash"></i>
+                                Clear
+                            </button>
+                            <button id="autoSpin" class="control-btn">
+                                <i class="fas fa-robot"></i>
+                                Auto Spin
+                            </button>
+                        </div>
+                    </div>
+                    <div class="results-list" id="resultsList">
+                        <div class="result-item jackpot">
+                            <div class="result-icon">
+                                <i class="fas fa-crown"></i>
+                            </div>
+                            <div class="result-details">
+                                <div class="result-prize">JACKPOT!</div>
+                                <div class="result-time">Just now</div>
+                            </div>
+                            <div class="result-amount">+5,000</div>
+                        </div>
+                    </div>
+                    
+                    <div class="current-win" id="currentWin">
+                        <div class="win-header">
+                            <h4><i class="fas fa-star"></i> Current Win</h4>
+                            <button id="claimPrize" class="claim-btn">
+                                <i class="fas fa-check"></i>
+                                Claim Prize
+                            </button>
+                        </div>
+                        <div class="win-details">
+                            <div class="win-prize" id="winPrize">No prize yet</div>
+                            <div class="win-multiplier">
+                                <span>Multiplier: </span>
+                                <span class="multiplier-value" id="winMultiplier">1x</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="control-panel">
+                <div class="panel-section">
+                    <div class="section-header">
+                        <h3><i class="fas fa-sliders-h"></i> Wheel Settings</h3>
+                    </div>
+                    <div class="settings-grid">
+                        <div class="setting-item">
+                            <label for="wheelSegments">
+                                <i class="fas fa-pie-chart"></i>
+                                Segments
+                            </label>
+                            <div class="setting-control">
+                                <input type="range" id="wheelSegments" min="4" max="16" value="8" step="2">
+                                <span class="setting-value" id="segmentsValue">8</span>
+                            </div>
+                        </div>
+                        <div class="setting-item">
+                            <label for="spinDuration">
+                                <i class="fas fa-clock"></i>
+                                Spin Duration
+                            </label>
+                            <div class="setting-control">
+                                <input type="range" id="spinDuration" min="3" max="10" value="5" step="0.5">
+                                <span class="setting-value" id="durationValue">5s</span>
+                            </div>
+                        </div>
+                        <div class="setting-item">
+                            <label for="spinPower">
+                                <i class="fas fa-bolt"></i>
+                                Spin Power
+                            </label>
+                            <div class="setting-control">
+                                <input type="range" id="spinPower" min="1" max="10" value="7">
+                                <span class="setting-value" id="powerValue">7</span>
+                            </div>
+                        </div>
+                        <div class="setting-item">
+                            <label for="soundVolume">
+                                <i class="fas fa-volume-up"></i>
+                                Sound Volume
+                            </label>
+                            <div class="setting-control">
+                                <input type="range" id="soundVolume" min="0" max="100" value="80">
+                                <span class="setting-value" id="volumeValue">80%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel-section">
+                    <div class="section-header">
+                        <h3><i class="fas fa-medal"></i> Achievements</h3>
+                    </div>
+                    <div class="achievements-grid" id="achievementsGrid">
+                        <div class="achievement unlocked">
+                            <div class="achievement-icon">
+                                <i class="fas fa-play-circle"></i>
+                            </div>
+                            <div class="achievement-info">
+                                <div class="achievement-name">First Spin</div>
+                                <div class="achievement-desc">Complete your first spin</div>
+                            </div>
+                            <div class="achievement-reward">+100</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel-section">
+                    <div class="section-header">
+                        <h3><i class="fas fa-chart-line"></i> Statistics</h3>
+                    </div>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-history"></i>
+                            </div>
+                            <div class="stat-content">
+                                <div class="stat-value" id="todaySpins">12</div>
+                                <div class="stat-label">Spins Today</div>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-percentage"></i>
+                            </div>
+                            <div class="stat-content">
+                                <div class="stat-value" id="winRate">64.5%</div>
+                                <div class="stat-label">Win Rate</div>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-money-bill-wave"></i>
+                            </div>
+                            <div class="stat-content">
+                                <div class="stat-value" id="totalWon">25,400</div>
+                                <div class="stat-label">Total Won</div>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-rocket"></i>
+                            </div>
+                            <div class="stat-content">
+                                <div class="stat-value" id="bestStreak">15</div>
+                                <div class="stat-label">Best Streak</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="prizes-panel">
+                <div class="panel-section">
+                    <div class="section-header">
+                        <h3><i class="fas fa-gem"></i> Prize Configuration</h3>
+                        <div class="header-actions">
+                            <button id="addPrize" class="action-btn">
+                                <i class="fas fa-plus"></i>
+                                Add Prize
+                            </button>
+                            <button id="randomizePrizes" class="action-btn">
+                                <i class="fas fa-random"></i>
+                                Randomize
+                            </button>
+                        </div>
+                    </div>
+                    <div class="prizes-list" id="prizesList">
+                        <div class="prize-item">
+                            <div class="prize-color" style="background: #FF6B6B;"></div>
+                            <div class="prize-info">
+                                <input type="text" class="prize-name" value="Jackpot" placeholder="Prize name">
+                                <input type="number" class="prize-value" value="5000" placeholder="Value">
+                            </div>
+                            <div class="prize-probability">
+                                <span>5%</span>
+                            </div>
+                            <div class="prize-actions">
+                                <button class="prize-btn color-btn">
+                                    <i class="fas fa-palette"></i>
+                                </button>
+                                <button class="prize-btn delete-btn">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="probability-info">
+                        <div class="prob-total">
+                            <span>Total Probability: </span>
+                            <span id="totalProbability">100%</span>
+                        </div>
+                        <div class="prob-warning" id="probabilityWarning"></div>
+                    </div>
+                </div>
+
+                <div class="panel-section">
+                    <div class="section-header">
+                        <h3><i class="fas fa-store"></i> Shop</h3>
+                    </div>
+                    <div class="shop-items">
+                        <div class="shop-item">
+                            <div class="shop-icon">
+                                <i class="fas fa-coins"></i>
+                            </div>
+                            <div class="shop-details">
+                                <div class="shop-name">Coin Pack</div>
+                                <div class="shop-desc">Get 10,000 coins instantly</div>
+                            </div>
+                            <button class="shop-buy">
+                                <span class="shop-price">$4.99</span>
+                                <i class="fas fa-shopping-cart"></i>
+                            </button>
+                        </div>
+                        <div class="shop-item">
+                            <div class="shop-icon">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <div class="shop-details">
+                                <div class="shop-name">Unlimited Spins</div>
+                                <div class="shop-desc">24 hours unlimited spinning</div>
+                            </div>
+                            <button class="shop-buy">
+                                <span class="shop-price">$9.99</span>
+                                <i class="fas fa-shopping-cart"></i>
+                            </button>
+                        </div>
+                        <div class="shop-item">
+                            <div class="shop-icon">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="shop-details">
+                                <div class="shop-name">Premium Wheel</div>
+                                <div class="shop-desc">Exclusive wheel designs</div>
+                            </div>
+                            <button class="shop-buy">
+                                <span class="shop-price">$2.99</span>
+                                <i class="fas fa-shopping-cart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4><i class="fas fa-gamepad"></i> Game Info</h4>
+                    <p>Spin Wheel Pro v2.0</p>
+                    <p>Built with HTML5, CSS3 & JavaScript</p>
+                </div>
+                <div class="footer-section">
+                    <h4><i class="fas fa-cogs"></i> Features</h4>
+                    <p>Customizable Wheel • Multiple Prizes • Statistics • Achievements</p>
+                </div>
+                <div class="footer-section">
+                    <h4><i class="fas fa-shield-alt"></i> Fair Play</h4>
+                    <p>Random Number Generator Certified</p>
+                    <p>Provably Fair System</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Spin Wheel Pro. All rights reserved. | Made with <i class="fas fa-heart"></i> for gaming enthusiasts</p>
+            </div>
+        </footer>
+    </div>
+
+    <div class="win-modal" id="winModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-trophy"></i> Congratulations!</h2>
+                <button class="modal-close" id="closeModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="prize-display">
+                    <div class="prize-icon" id="modalPrizeIcon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <div class="prize-title" id="modalPrizeTitle">JACKPOT!</div>
+                    <div class="prize-amount" id="modalPrizeAmount">+5,000 coins</div>
+                    <div class="prize-multiplier">
+                        <span>Multiplier: </span>
+                        <span class="multiplier" id="modalMultiplier">3x</span>
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <button class="modal-btn share-btn">
+                        <i class="fas fa-share-alt"></i>
+                        Share Win
+                    </button>
+                    <button class="modal-btn spin-again-btn" id="spinAgain">
+                        <i class="fas fa-redo"></i>
+                        Spin Again
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="confetti-container" id="confettiContainer"></div>
+
+    <audio id="spinSound" src="https://assets.mixkit.co/sfx/preview/mixkit-slot-machine-spin-1072.mp3" preload="auto"></audio>
+    <audio id="winSound" src="https://assets.mixkit.co/sfx/preview/mixkit-winning-chimes-2015.mp3" preload="auto"></audio>
+    <audio id="clickSound" src="https://assets.mixkit.co/sfx/preview/mixkit-select-click-1109.mp3" preload="auto"></audio>
+    <audio id="jackpotSound" src="https://assets.mixkit.co/sfx/preview/mixkit-winning-slot-machine-coin-triumph-1998.mp3" preload="auto"></audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
