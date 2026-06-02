@@ -1,7 +1,7 @@
 {
   "title": "Weather App",
   "description": "A responsive JavaScript weather app displaying real-time temperature, conditions, and location-based forecasts via API.",
-  "image": "https://raw.githubusercontent.com/Bilal742/JavaScript-projects/main/Img/image7.png",
+  "image": "https://raw.githubusercontent.com/mrvornex/JavaScript-projects/main/Img/image7.png",
   "techStack": [
     "HTML",
     "CSS",
